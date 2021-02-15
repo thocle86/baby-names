@@ -1,10 +1,14 @@
-# BABY NAMES
+# PORTFOLIO
 
 ## Purpose
 
-- The purpose of this application is to help parents choose a first name for their child.
-- They can offer up to 5 first names or more, girl or boy.
-- Then family and friends can sort the names according to their preference.
+This is my portfolio, it presents:
+
+- my skills;
+- my projects;
+- my developments;
+- my CV;
+- my socail networks
 
 
 ## Requirements
@@ -18,12 +22,12 @@
 
 1. Clone the current repository.
 
-2. With mysql, create a babynames database and create a user. Don't forget to give the rights to the user.
+2. With mysql, create a **portfolio** database and create a user. Don't forget to give the rights to the user.
 > If you want to use another service, see the official symfony documentation
 
 3. Move into the directory and create an `.env.local` file (copy env file). **This one is not committed to the shared repository.**
 
-4. Uncomment line DATABASE_URL=mysql, set `db_name` to **babynames** and set the user `db_user` and the password `db_password`.
+4. Uncomment line DATABASE_URL=mysql, set `db_name` to **portfolio** and set the user `db_user` and the password `db_password`.
 > Make sure the connection with the base is functional
 
 5. Enter your information to configure your email address on line **MAILER_DSN=...**.

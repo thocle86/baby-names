@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+
+<main>
+
+    {% for message in app.flashes('succes') %}
+        <div class="alert alert-danger" role="alert">{{ message }}</div>
+    {% endfor %}
+
+    <h1>Portfolio</h1>
+
+</main>
+{% endblock %}
