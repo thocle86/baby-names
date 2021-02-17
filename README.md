@@ -8,7 +8,7 @@ This is my portfolio, it presents:
 - my projects;
 - my developments;
 - my CV;
-- my socail networks
+- my social networks
 
 
 ## Requirements
@@ -33,7 +33,7 @@ This is my portfolio, it presents:
 5. Enter your information to configure your email address on line **MAILER_DSN=...**.
 
 6. Enter your adress email on line **MAILER_FROM_ADDRESS=...**. This address will be the one with which you send emails.
-> For exemple: admin@babynames.fr
+> For exemple: admin@clement-dev.com
 
 7. Execute the following commands in your working folder to install the project:
 
@@ -41,10 +41,10 @@ This is my portfolio, it presents:
 # Install dependencies
 composer install
 
-# Delete 'babynames' DB for verifiy the connection
+# Delete 'portfolio' DB for verifiy the connection
 php bin/console d:d:d --force
 
-# Create 'babynames' DB
+# Create 'portfolio' DB
 php bin/console d:d:c
 
 # Execute migrations and create tables
