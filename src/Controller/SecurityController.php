@@ -14,12 +14,13 @@ use Symfony\Component\Mime\Address;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 use App\Security\EmailVerifier;
 use App\Security\UserAuthenticator;
+use App\Repository\UserRepository;
 use App\Entity\User;
 use App\Form\RegistrationType;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
- * @Route("/", name="app_")
+ * @Route("/", name="admin_")
  */
 class SecurityController extends AbstractController
 {
@@ -35,16 +36,19 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
-        // }
+        if ($this->getUser()) {
+            return $this->redirectToRoute('app_main');
+        }
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        return $this->render('security/login.html.twig', [
+            'last_username' => $lastUsername,
+            'error' => $error
+        ]);
     }
 
     /**
@@ -63,45 +67,52 @@ class SecurityController extends AbstractController
         UserPasswordEncoderInterface $passwordEncoder,
         GuardAuthenticatorHandler $guardHandler,
         UserAuthenticator $authenticator,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
+        UserRepository $userRepository
     ): Response {
-        $user = new User();
-        $form = $this->createForm(RegistrationType::class, $user);
-        $form->handleRequest($request);
+        $users = $userRepository->findAll();
+        if (empty($users)) {
+            $user = new User();
+            $form = $this->createForm(RegistrationType::class, $user);
+            $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
-            $user->setPassword(
-                $passwordEncoder->encodePassword(
+            if ($form->isSubmitted() && $form->isValid()) {
+                // encode the plain password
+                $user->setPassword(
+                    $passwordEncoder->encodePassword(
+                        $user,
+                        $form->get('plainPassword')->getData()
+                    )
+                );
+
+                $user->setRoles(['ROLE_ADMIN']);
+                $entityManager->persist($user);
+                $entityManager->flush();
+
+                // generate a signed url and email it to the user
+                $this->emailVerifier->sendEmailConfirmation('admin_verify_email', $user,
+                    (new TemplatedEmail())
+                        ->from(new Address('no-reply@thomas-clement.com', 'thomas-clement.com'))
+                        ->to($user->getEmail())
+                        ->subject('Confirmer votre email')
+                        ->htmlTemplate('security/confirmation_email.html.twig')
+                );
+                // do anything else you need here, like send an email
+
+                return $guardHandler->authenticateUserAndHandleSuccess(
                     $user,
-                    $form->get('plainPassword')->getData()
-                )
-            );
+                    $request,
+                    $authenticator,
+                    'main' // firewall name in security.yaml
+                );
+            }
 
-            $entityManager->persist($user);
-            $entityManager->flush();
-
-            // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
-                (new TemplatedEmail())
-                    ->from(new Address('no-reply@babynames.com', 'Babynames.com'))
-                    ->to($user->getEmail())
-                    ->subject('Confirmer votre email')
-                    ->htmlTemplate('security/confirmation_email.html.twig')
-            );
-            // do anything else you need here, like send an email
-
-            return $guardHandler->authenticateUserAndHandleSuccess(
-                $user,
-                $request,
-                $authenticator,
-                'main' // firewall name in security.yaml
-            );
+            return $this->render('security/register.html.twig', [
+                'registrationForm' => $form->createView(),
+            ]);
+        } else {
+            return $this->redirectToRoute('admin_login');
         }
-
-        return $this->render('security/register.html.twig', [
-            'registrationForm' => $form->createView(),
-        ]);
     }
 
     /**
@@ -117,10 +128,9 @@ class SecurityController extends AbstractController
         } catch (VerifyEmailExceptionInterface $exception) {
             $this->addFlash('verify_email_error', $exception->getReason());
 
-            return $this->redirectToRoute('app_register');
+            return $this->redirectToRoute('admin_register');
         }
 
-        // @TODO Change the redirect on success and handle or remove the flash message in your templates
         $this->addFlash('success', 'Votre email a bien été vérifié');
 
         return $this->redirectToRoute('app_main');
