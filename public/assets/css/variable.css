@@ -1,0 +1,14 @@
+:root {
+    --screen-phone: 767px;
+    --screen-tablet: 979px;
+    --screen-desktop: 1199px;
+    --primary-color: #4706FF;
+    --secondary-color: #131313;
+    --white: #efefff;
+    --primary-title: 'SquadaOne', sans-serif;
+}
+
+@font-face {
+    font-family: 'SquadaOne';
+    src: url('../fonts/SquadaOne-Regular.ttf');
+}

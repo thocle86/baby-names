@@ -2,12 +2,66 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Thomas CLEMENT{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-
-        {% block javascripts %}{% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            {% block title %}
+                Thomas CLEMENT
+            {% endblock %}
+        </title>
+        <link rel="stylesheet" href="/assets/css/menu.css" />
+        <link rel="stylesheet" href="/lib/fontawesome-free-5.15.3-web/css/all.css" />
+        {% block stylesheets %}
+        {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <section class="menu">
+            <div class="menu-burger menu-button">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav class="nav-container">
+                <div class="menu-close menu-button">
+                    <i class="fas fa-times"></i>
+                </div>
+                <ul class="nav-menu">
+                    <li>
+                        <i class="fas fa-user"></i>
+                        <a href="">
+                            A propos de moi
+                        </a>
+                    </li>
+                    <li>
+                        <i class="fas fa-book"></i>
+                        <a href="">
+                            Mon portfolio
+                        </a>
+                    </li>
+                    <li>
+                        <i class="fas fa-flask"></i>
+                        <a href="">
+                            Mon labo
+                        </a>
+                    </li>
+                    <li>
+                        <i class="fas fa-id-card"></i>
+                        <a href="">
+                            Curriculum Vitae
+                        </a>
+                    </li>
+                    <li>
+                        <i class="fas fa-at"></i>
+                        <a href="">
+                            Me contacter
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+        <div class="menu-clear">
+        </div>
+        {% block body %}
+        {% endblock %}
+        <script src="/assets/js/menu.js"></script>
+        {% block javascripts %}
+        {% endblock %}
     </body>
 </html>
