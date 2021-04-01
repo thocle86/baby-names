@@ -37,7 +37,7 @@ class SecurityController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         if ($this->getUser()) {
-            return $this->redirectToRoute('app_main');
+            return $this->redirectToRoute('about_me');
         }
 
         // get the login error if there is one
@@ -133,6 +133,6 @@ class SecurityController extends AbstractController
 
         $this->addFlash('success', 'Votre email a bien été vérifié');
 
-        return $this->redirectToRoute('app_main');
+        return $this->redirectToRoute('about_me');
     }
 }

@@ -1,9 +1,5 @@
 @import 'variable.css';
 
-* {
-    margin: 0;
-    padding: 0;
-}
 li {
     list-style: none;
 }
@@ -14,27 +10,24 @@ a {
     color: var(--white);
 }
 
-i {
-    color: var(--white);
-    padding: 0 0.5rem;
-}
-
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 979px) {
     .menu-button {
         position: fixed;
         top: 10px;
         right: 10px;
-        z-index: 10;
+        z-index: 200;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        height: 60px;
-        width: 60px;
+        height: 65px;
+        width: 65px;
         border-radius: 100%;
+        border: solid 2px var(--secondary-color);
         background-color: var(--primary-color);
         color: var(--secondary-color);
+        font-size: 2.5rem;
     }
 
     .nav-container {
@@ -73,12 +66,14 @@ i {
         border-bottom: none;
     }
 
-    i, a {
+    .nav-menu i,
+    .nav-menu a {
         font-size: 2rem;
+        color: var(--white);
     }
 }
 
-@media screen and (min-width: 979px) {
+@media screen and (min-width: 980px) {
     .menu {
         position: fixed;
         top: 0;
@@ -90,7 +85,7 @@ i {
         grid-template-columns: repeat(5, 1fr);
         justify-items: center;
         align-items: center;
-        height: 50px;
+        height: 6vh;
         background-color: var(--secondary-color);
     }
 
@@ -102,10 +97,6 @@ i {
         transform: scale(1.1);
     }
 
-    i, a {
-        font-size: 1.5rem;
-    }
-
     .menu-burger {
         display: none;
     }
@@ -115,6 +106,28 @@ i {
     }
 
     .menu-clear {
-        height: 50px;
+        height: 6vh;
+    }
+}
+
+@media screen and (min-width: 980px) and (max-width: 1299px) {
+    i, a {
+        font-size: 1.2rem;
+        color: var(--white);
+    }
+
+    i {
+        padding-right: 10px;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    i, a {
+        font-size: 1.5rem;
+        color: var(--white);
+    }
+
+    i {
+        padding-right: 10px;
     }
 }

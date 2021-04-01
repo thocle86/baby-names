@@ -8,8 +8,12 @@
                 Thomas CLEMENT
             {% endblock %}
         </title>
-        <link rel="stylesheet" href="/assets/css/menu.css" />
         <link rel="stylesheet" href="/lib/fontawesome-free-5.15.3-web/css/all.css" />
+        <link rel="stylesheet" href="/assets/css/common.css" />
+        <link rel="stylesheet" href="/assets/css/menu.css" />
+        <link rel="stylesheet" href="/assets/css/aboutMe.css" />
+        <link rel="stylesheet" href="/assets/css/login.css" />
+        <link rel="stylesheet" href="/assets/css/admin.css" />
         {% block stylesheets %}
         {% endblock %}
     </head>
@@ -25,7 +29,7 @@
                 <ul class="nav-menu">
                     <li>
                         <i class="fas fa-user"></i>
-                        <a href="">
+                        <a href="{{ path('about_me') }}">
                             A propos de moi
                         </a>
                     </li>
@@ -58,7 +62,10 @@
         </section>
         <div class="menu-clear">
         </div>
-        {% block body %}
+        {% if app.user %}
+            <a href="{{ path('admin_logout') }}" class="logout"><i class="fas fa-power-off"></i></a>
+        {% endif %}
+        {% block main %}
         {% endblock %}
         <script src="/assets/js/menu.js"></script>
         {% block javascripts %}

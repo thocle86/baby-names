@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Thomas Clement{% endblock %}
+
+{% block main %}
+    <main class="container cont-about-me">
+        <section class="title-page tp-about-me">
+            <h1>A propos de moi</h1>
+            <section class="picture-frame pf-about-me pf-mobile">
+                {% if aboutMe %}
+                    <img src="assets/upload/{{ aboutMe[0].avatar }}" />
+                {% endif %}
+            </section>
+        </section>
+        <section>
+            <section class="picture-frame pf-about-me pf-desktop">
+                {% if aboutMe %}
+                    <img src="assets/upload/{{ aboutMe[0].avatar }}" />
+                {% endif %}
+            </section>
+            <section class="about-me">
+                {% if aboutMe %}
+                    <h1>Thomas CLEMENT</h1>
+                    <h2>{{ aboutMe[0].myJobTitle }}</h2>
+                    <p>{{ aboutMe[0].myJobText|nl2br }}</p>
+                    <h2>{{ aboutMe[0].myNewsTitle }}</h2>
+                    <p>{{ aboutMe[0].myNewsText|nl2br }}</p>
+                {% endif %}
+            </section>
+        </section>
+        {% if app.user and is_granted("ROLE_ADMIN") %}
+            <section class="buttons-admin">
+                <p>Mode édition</p>
+                {% if aboutMe is empty %}
+                    <a href="{{ path('about_me_new') }}">
+                        <input type="button" value="Nouveau" class="button-add">
+                    </a>
+                {% endif %}
+                {% if aboutMe is not empty %}
+                    <form method="post" action="{{ path('about_me_delete', {'id' : aboutMe[0].id}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir revenir au carousel par défaut?');">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ aboutMe[0].id) }}">
+                        <input type="submit" value="Supprimer" class="button-delete">
+                    </form>
+                    <a href="{{ path('about_me_edit', {'id': aboutMe[0].id }) }}">
+                        <input type="button" value="Editer" class="button-edit">
+                    </a>
+                {% endif %}
+            </section>
+        {% endif %}
+    </main>
+{% endblock %}
