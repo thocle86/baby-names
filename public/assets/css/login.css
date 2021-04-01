@@ -1,0 +1,101 @@
+@import 'variable.css';
+
+.cont-login {
+    height: 100vh;
+    font-family: var(--primary-text);
+}
+
+.cont-login form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--secondary-color);
+    margin: 100px auto;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.cont-login input,
+.cont-login button {
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.cont-login label {
+    color: var(--white);
+    margin-top: 10px;
+}
+
+.cont-login button {
+    background-color: var(--orange);
+    border: solid 2px var(--white);
+    font-weight: bold;
+}
+
+.cont-login input,
+.cont-login label {
+    width: 90%;
+}
+
+@media screen and (max-width: 979px) {
+    .cont-login,
+    .cont-login input,
+    .cont-login button,
+    .cont-login label {
+        font-size: 1rem;
+    }
+    .cont-login form {
+        width: 90%;
+    }
+}
+
+@media screen and (min-width: 980px) {
+    .cont-login,
+    .cont-login input,
+    .cont-login button,
+    .cont-login label {
+        font-size: 1.2rem;
+    }
+    .cont-login form {
+        width: 40%;
+    }
+}
+
+.logout {
+    z-index: 200;
+    position: fixed;
+    top: 90px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--orange);
+    color: var(--secondary-color);
+    border-radius: 50%;
+    border: solid 2px var(--secondary-color);
+}
+
+.logout i {
+    padding: 0;
+}
+
+@media screen and (max-width: 979px) {
+    .logout {
+        width: 65px;
+        height: 65px;
+        font-size: 1.7rem;
+    }
+}
+
+@media screen and (min-width: 980px) {
+    .logout {
+        width: 80px;
+        height: 80px;
+        font-size: 2.2rem;
+    }
+}
