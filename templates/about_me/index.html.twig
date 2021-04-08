@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/aboutMe.css" />
+{% endblock %}
+
 {% block title %}Thomas Clement{% endblock %}
 
 {% block main %}
@@ -21,10 +25,10 @@
             <section class="about-me">
                 {% if aboutMe %}
                     <h1>Thomas CLEMENT</h1>
-                    <h2>{{ aboutMe[0].myJobTitle }}</h2>
-                    <p>{{ aboutMe[0].myJobText|nl2br }}</p>
-                    <h2>{{ aboutMe[0].myNewsTitle }}</h2>
-                    <p>{{ aboutMe[0].myNewsText|nl2br }}</p>
+                    <h2 class="sub-title">{{ aboutMe[0].myJobTitle }}</h2>
+                    <p class="paragraph">{{ aboutMe[0].myJobText|nl2br }}</p>
+                    <h2 class="sub-title">{{ aboutMe[0].myNewsTitle }}</h2>
+                    <p class="paragraph">{{ aboutMe[0].myNewsText|nl2br }}</p>
                 {% endif %}
             </section>
         </section>

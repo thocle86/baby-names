@@ -11,19 +11,16 @@
         <link rel="stylesheet" href="/lib/fontawesome-free-5.15.3-web/css/all.css" />
         <link rel="stylesheet" href="/assets/css/common.css" />
         <link rel="stylesheet" href="/assets/css/menu.css" />
-        <link rel="stylesheet" href="/assets/css/aboutMe.css" />
-        <link rel="stylesheet" href="/assets/css/login.css" />
-        <link rel="stylesheet" href="/assets/css/admin.css" />
         {% block stylesheets %}
         {% endblock %}
     </head>
     <body>
         <section class="menu">
-            <div class="menu-burger menu-button">
+            <div id="menu-burger" class="menu-button">
                 <i class="fas fa-bars"></i>
             </div>
             <nav class="nav-container">
-                <div class="menu-close menu-button">
+                <div id="menu-close" class="menu-button">
                     <i class="fas fa-times"></i>
                 </div>
                 <ul class="nav-menu">
@@ -35,7 +32,7 @@
                     </li>
                     <li>
                         <i class="fas fa-book"></i>
-                        <a href="">
+                        <a href="{{ path('project') }}">
                             Mon portfolio
                         </a>
                     </li>

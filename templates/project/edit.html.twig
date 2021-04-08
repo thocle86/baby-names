@@ -1,0 +1,26 @@
+{{ form_start(form) }}
+
+    {{ form_label(form.title) }}
+    {{ form_widget(form.title) }}
+
+    {{ form_label(form.photo) }}
+    {{ form_widget(form.photo) }}
+
+    {{ form_label(form.text) }}
+    {{ form_widget(form.text) }}
+
+    {{ form_label(form.linkWeb) }}
+    {{ form_widget(form.linkWeb) }}
+
+    {{ form_label(form.linkGit) }}
+    {{ form_widget(form.linkGit) }}
+
+    {{ form_label(form.linkVideo) }}
+    {{ form_widget(form.linkVideo) }}
+
+    {{ form_label(form.linkInfos) }}
+    {{ form_widget(form.linkInfos) }}
+
+    <input type='submit' value='Envoyer'>
+
+{{ form_end(form) }}

@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/project.css" />
+{% endblock %}
+
+{% block title %}Mon portfolio{% endblock %}
+
+{% block main %}
+    <main class="container cont-project">
+        <section class="title-page tp-project">
+            <h1>Mon portfolio</h1>
+        </section>
+        <section>
+            <h2 class="sub-title">MES projets</h2>
+            {% if myProjects is not empty %}
+                {% for myProject in myProjects %}
+                    <article class="project">
+                        <h3 class="project-title pt-mobile">{{ myProject.title }}</h3>
+                        <div class="picture-frame pf-project">
+                            <img src="/assets/upload/{{ myProject.photo }}" />
+                        </div>
+                        <div>
+                            <h3 class="project-title pt-desktop">{{ myProject.title }}</h3>
+                            <p>{{ myProject.text }}</p>
+                            <div class="project-links">
+                                <a href="{{ myProject.linkWeb }}" target="blank"><i class="fas fa-globe"></i></a>
+                                <a href="{{ myProject.linkGit }}" target="blank"><i class="fab fa-github"></i></a>
+                                <a href="{{ myProject.linkVideo }}" target="blank"><i class="fas fa-play-circle"></i></a>
+                                <a href="{{ myProject.linkInfos }}" target="blank"><i class="fas fa-info-circle"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                    {% if app.user and is_granted("ROLE_ADMIN") %}
+                        <section class="buttons-admin">
+                            <p>Mode édition</p>
+                            {% if myProject is empty %}
+                                <a href="{{ path('project_new') }}">
+                                    <input type="button" value="Nouveau" class="button-add">
+                                </a>
+                            {% endif %}
+                            {% if myProject is not empty %}
+                                <form method="post" action="{{ path('project_delete', {'id' : myProject.id}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir revenir au carousel par défaut?');">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ myProject.id) }}">
+                                    <input type="submit" value="Supprimer" class="button-delete">
+                                </form>
+                                <a href="{{ path('project_edit', {'id': myProject.id }) }}">
+                                    <input type="button" value="Editer" class="button-edit">
+                                </a>
+                            {% endif %}
+                        </section>
+                    {% endif %}
+                    <div class="line"></div>
+                {% endfor %}
+            {% else %}
+                <h3 class="work-in-progress">
+                    🚧 🚧 🚧<br>
+                    EN TRAVAUX<br>
+                    🚧 🚧 🚧<br>
+                </h3>
+            {% endif %}
+        </section>
+        <section>
+            <h2 class="sub-title">Projets PRO</h2>
+            {% if projectPros is not empty %}
+                {% for projectPro in projectPros %}
+                    <article class="project">
+                        <h3 class="project-title pt-mobile">{{ projectPro.title }}</h3>
+                        <div class="picture-frame pf-project">
+                            <img src="/assets/upload/{{ projectPro.photo }}" />
+                        </div>
+                        <div>
+                            <h3 class="project-title pt-desktop">{{ projectPro.title }}</h3>
+                            <p>{{ projectPro.text }}</p>
+                            <div class="project-links">
+                                <a href="{{ projectPro.linkWeb }}" target="blank"><i class="fas fa-globe"></i></a>
+                                <a href="{{ projectPro.linkGit }}" target="blank"><i class="fab fa-github"></i></a>
+                                <a href="{{ projectPro.linkVideo }}" target="blank"><i class="fas fa-play-circle"></i></a>
+                                <a href="{{ projectPro.linkInfos }}" target="blank"><i class="fas fa-info-circle"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                    {% if app.user and is_granted("ROLE_ADMIN") %}
+                        <section class="buttons-admin">
+                            <p>Mode édition</p>
+                            {% if projectPro is empty %}
+                                <a href="{{ path('project_new') }}">
+                                    <input type="button" value="Nouveau" class="button-add">
+                                </a>
+                            {% endif %}
+                            {% if projectPro is not empty %}
+                                <form method="post" action="{{ path('project_delete', {'id' : projectPro.id}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir revenir au carousel par défaut?');">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ projectPro.id) }}">
+                                    <input type="submit" value="Supprimer" class="button-delete">
+                                </form>
+                                <a href="{{ path('project_edit', {'id': projectPro.id }) }}">
+                                    <input type="button" value="Editer" class="button-edit">
+                                </a>
+                            {% endif %}
+                        </section>
+                    {% endif %}
+                    <div class="line"></div>
+                {% endfor %}
+            {% else %}
+                <h3 class="work-in-progress">
+                    🚧 🚧 🚧<br>
+                    EN TRAVAUX<br>
+                    🚧 🚧 🚧<br>
+                </h3>
+            {% endif %}
+        </section>
+    </main>
+{% endblock %}

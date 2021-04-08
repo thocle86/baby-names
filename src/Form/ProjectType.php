@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\AboutMe;
+use App\Entity\Project;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -11,18 +11,19 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Validator\Constraints\File;
 
-class AboutMeType extends AbstractType
+class ProjectType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('avatar', FileType::class, [
+            ->add('title', TextType::class)
+            ->add('photo', FileType::class, [
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [
                     new File([
-                        'maxSize' => '200k',
-                        'maxSizeMessage' => 'La photo dépasse la limite de 200k !',
+                        'maxSize' => '300k',
+                        'maxSizeMessage' => 'La photo dépasse la limite de 300k !',
                         'mimeTypes' => [
                             'image/png',
                             'image/jpeg',
@@ -31,17 +32,19 @@ class AboutMeType extends AbstractType
                     ])
                 ],
             ])
-            ->add('myJobTitle', TextType::class)
-            ->add('myJobText', TextareaType::class)
-            ->add('myNewsTitle', TextType::class)
-            ->add('myNewsText', TextareaType::class)
+            ->add('text', TextareaType::class)
+            ->add('linkWeb', TextType::class, ['required' => false])
+            ->add('linkGit', TextType::class, ['required' => false])
+            ->add('linkVideo', TextType::class, ['required' => false])
+            ->add('linkInfos', TextType::class, ['required' => false])
+            ->add('type', TextType::class)
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => AboutMe::class,
+            'data_class' => Project::class,
         ]);
     }
 }

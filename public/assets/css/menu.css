@@ -7,7 +7,10 @@ li {
 a {
     text-decoration: none;
     font-family: var(--primary-title);
-    color: var(--white);
+}
+
+.menu {
+    z-index: 100;
 }
 
 @media screen and (max-width: 979px) {
@@ -97,11 +100,8 @@ a {
         transform: scale(1.1);
     }
 
-    .menu-burger {
-        display: none;
-    }
-
-    .menu-close {
+    #menu-burger,
+    #menu-close {
         display: none;
     }
 
@@ -111,23 +111,25 @@ a {
 }
 
 @media screen and (min-width: 980px) and (max-width: 1299px) {
-    i, a {
+    .menu i,
+    .menu a {
         font-size: 1.2rem;
         color: var(--white);
     }
 
-    i {
+    .menu i {
         padding-right: 10px;
     }
 }
 
 @media screen and (min-width: 1300px) {
-    i, a {
+    .menu i,
+    .menu a {
         font-size: 1.5rem;
         color: var(--white);
     }
 
-    i {
+    .menu i {
         padding-right: 10px;
     }
 }
