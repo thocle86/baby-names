@@ -15,8 +15,15 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    font-family: var(--primary-text);
+}
+
+.about-me h1 {
+    font-family: var(--primary-title);
     color: var(--white);
+}
+
+.sub-title {
+    font-weight: 100;
 }
 
 @media screen and (max-width: 979px) {
@@ -36,19 +43,17 @@
     }
 
     .about-me h1 {
-        padding-top: 30px;
+        padding-top: 20px;
         font-size: 2.5rem;
         font-weight: bold;
     }
 
-    .about-me h2 {
-        padding-top: 30px;
-        font-size: 2rem;
+    .sub-title {
+        padding-top: 20px;
     }
 
-    .about-me p {
+    .paragraph {
         padding-top: 10px;
-        font-size: 1.2rem;
     }
 }
 
@@ -70,14 +75,12 @@
         font-weight: bold;
     }
 
-    .about-me h2 {
+    .sub-title {
         padding: 20px 50px 0 0;
-        font-size: 3rem;
     }
 
-    .about-me p {
+    .paragraph {
         padding: 0 50px 10px 0;
-        font-size: 1.8rem;
     }
 }
 

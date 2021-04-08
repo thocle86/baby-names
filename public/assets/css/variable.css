@@ -3,11 +3,12 @@
     --screen-tablet: 979px;
     --screen-desktop: 1199px;
     --primary-color: #4706FF;
-    --secondary-color: #131313;
+    --secondary-color: #232323;
     --white: #fff;
     --orange: #F5B041;
     --primary-title: 'Baumans', sans-serif;
     --primary-text: 'TextMeOne', sans-serif;
+    --secondary-title: 'GhoustOutline', sans-serif;
 }
 
 @font-face {
@@ -28,4 +29,9 @@
 @font-face {
     font-family: 'AllertaStencil';
     src: url('../fonts/AllertaStencil-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'GhoustOutline';
+    src: url('../fonts/Ghoust-Outline.otf');
 }
