@@ -32,7 +32,7 @@
                         </div>
                     </article>
                     {% if app.user and is_granted("ROLE_ADMIN") %}
-                        <section class="buttons-admin">
+                        <div class="buttons-admin">
                             <p>Mode édition</p>
                             {% if myProject is empty %}
                                 <a href="{{ path('project_new') }}">
@@ -40,7 +40,7 @@
                                 </a>
                             {% endif %}
                             {% if myProject is not empty %}
-                                <form method="post" action="{{ path('project_delete', {'id' : myProject.id}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir revenir au carousel par défaut?');">
+                                <form method="post" action="{{ path('project_delete', {'id' : myProject.id}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir supprimer le contenu?');">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ myProject.id) }}">
                                     <input type="submit" value="Supprimer" class="button-delete">
@@ -49,7 +49,7 @@
                                     <input type="button" value="Editer" class="button-edit">
                                 </a>
                             {% endif %}
-                        </section>
+                        </div>
                     {% endif %}
                     <div class="line"></div>
                 {% endfor %}
@@ -82,7 +82,7 @@
                         </div>
                     </article>
                     {% if app.user and is_granted("ROLE_ADMIN") %}
-                        <section class="buttons-admin">
+                        <div class="buttons-admin">
                             <p>Mode édition</p>
                             {% if projectPro is empty %}
                                 <a href="{{ path('project_new') }}">
@@ -99,7 +99,7 @@
                                     <input type="button" value="Editer" class="button-edit">
                                 </a>
                             {% endif %}
-                        </section>
+                        </div>
                     {% endif %}
                     <div class="line"></div>
                 {% endfor %}

@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Form\AboutMeType;
 use App\Services\FileManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use App\Repository\SocialLinkRepository;
 
 class AboutMeController extends AbstractController
 {
@@ -19,16 +20,17 @@ class AboutMeController extends AbstractController
      * @Route("/", name="about_me")
      */
     public function index(
-        AboutMeRepository $abouMeRepository
+        AboutMeRepository $abouMeRepository,
+        SocialLinkRepository $socialLinkRepository
     ): Response {
-        $aboutMe = $abouMeRepository->findAll();
         return $this->render('about_me/index.html.twig', [
-            'aboutMe' => $aboutMe,
+            'aboutMe' => $abouMeRepository->findAll(),
+            'socialLinks' => $socialLinkRepository->findAll()
         ]);
     }
 
     /**
-     * @Route("/aboutme/new", name="about_me_new", methods={"GET","POST"})
+     * @Route("/about-me/new", name="about_me_new", methods={"GET","POST"})
      * @IsGranted("ROLE_ADMIN")
      */
     public function new(
@@ -66,7 +68,7 @@ class AboutMeController extends AbstractController
     }
 
     /**
-     * @Route("/aboutme/edit/{id}", name="about_me_edit", methods={"GET", "POST"})
+     * @Route("/about-me/edit/{id}", name="about_me_edit", methods={"GET", "POST"})
      * @IsGranted("ROLE_ADMIN")
      */
     public function edit(
@@ -101,7 +103,7 @@ class AboutMeController extends AbstractController
     }
 
     /**
-     * @Route("/aboutme/delete/{id}", name="about_me_delete", methods={"DELETE"})
+     * @Route("/about-me/delete/{id}", name="about_me_delete", methods={"DELETE"})
      * @IsGranted("ROLE_ADMIN")
      */
     public function delete(
