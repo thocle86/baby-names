@@ -26,29 +26,30 @@
                 <div class="socialLinks">
                     {% if socialLinks is not empty %}
                         {% for socialLink in socialLinks %}
-                            <a href="{{ socialLink.link }}" target="blank">
-                                <img src="assets/upload/{{ socialLink.logo }}" />
-                            </a>
-                            {% if app.user and is_granted("ROLE_ADMIN") %}
-                                <div class="buttons-admin">
-                                    <p>Mode édition</p>
-                                    {% if socialLink is empty %}
-                                        <a href="{{ path('social_link_new') }}">
-                                            <input type="button" value="Nouveau" class="button-add">
-                                        </a>
-                                    {% endif %}
-                                    {% if socialLink is not empty %}
-                                        <form method="post" action="{{ path('social_link_delete', {'id' : socialLink.id}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir supprimer le contenu?');">
-                                            <input type="hidden" name="_method" value="DELETE">
-                                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ socialLink.id) }}">
-                                            <input type="submit" value="Supprimer" class="button-delete">
-                                        </form>
-                                        <a href="{{ path('social_link_edit', {'id': socialLink.id }) }}">
-                                            <input type="button" value="Editer" class="button-edit">
-                                        </a>
-                                    {% endif %}
-                                </div>
-                            {% endif %}
+                            <div>
+                                <a href="{{ socialLink.link }}" target="blank">
+                                    <img src="assets/upload/{{ socialLink.logo }}" />
+                                </a>
+                                {% if app.user and is_granted("ROLE_ADMIN") %}
+                                    <div class="buttons-admin">
+                                        {% if socialLink is empty %}
+                                            <a href="{{ path('social_link_new') }}">
+                                                <input type="button" value="Nouveau" class="button-add">
+                                            </a>
+                                        {% endif %}
+                                        {% if socialLink is not empty %}
+                                            <form method="post" action="{{ path('social_link_delete', {'id' : socialLink.id}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir supprimer le contenu?');">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ socialLink.id) }}">
+                                                <input type="submit" value="Supprimer" class="button-delete">
+                                            </form>
+                                            <a href="{{ path('social_link_edit', {'id': socialLink.id }) }}">
+                                                <input type="button" value="Editer" class="button-edit">
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                            </div>
                         {% endfor %}
                     {% endif %}
                 </div>
@@ -65,7 +66,6 @@
         </section>
         {% if app.user and is_granted("ROLE_ADMIN") %}
             <div class="buttons-admin">
-                <p>Mode édition</p>
                 {% if aboutMe is empty %}
                     <a href="{{ path('about_me_new') }}">
                         <input type="button" value="Nouveau" class="button-add">

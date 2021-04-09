@@ -33,7 +33,6 @@
                     </article>
                     {% if app.user and is_granted("ROLE_ADMIN") %}
                         <div class="buttons-admin">
-                            <p>Mode édition</p>
                             {% if myProject is empty %}
                                 <a href="{{ path('project_new') }}">
                                     <input type="button" value="Nouveau" class="button-add">
@@ -83,7 +82,6 @@
                     </article>
                     {% if app.user and is_granted("ROLE_ADMIN") %}
                         <div class="buttons-admin">
-                            <p>Mode édition</p>
                             {% if projectPro is empty %}
                                 <a href="{{ path('project_new') }}">
                                     <input type="button" value="Nouveau" class="button-add">
