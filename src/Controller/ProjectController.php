@@ -18,7 +18,7 @@ class ProjectController extends AbstractController
     /**
      * @Route("/project", name="project")
      */
-    public function index(
+    public function indexProject(
         ProjectRepository $projectRepository
     ): Response {
         return $this->render('project/index.html.twig', [
@@ -32,7 +32,7 @@ class ProjectController extends AbstractController
      * @Route("/project/new", name="project_new", methods={"GET","POST"})
      * @IsGranted("ROLE_ADMIN")
      */
-    public function new(
+    public function newProject(
         Request $request,
         EntityManagerInterface $entityManager,
         FileManager $fileManager
@@ -70,7 +70,7 @@ class ProjectController extends AbstractController
      * @Route("/project/edit/{id}", name="project_edit", methods={"GET", "POST"})
      * @IsGranted("ROLE_ADMIN")
      */
-    public function edit(
+    public function editProject(
         Request $request,
         EntityManagerInterface $entityManager,
         FileManager $fileManager,
@@ -105,7 +105,7 @@ class ProjectController extends AbstractController
      * @Route("/project/delete/{id}", name="project_delete", methods={"DELETE"})
      * @IsGranted("ROLE_ADMIN")
      */
-    public function delete(
+    public function deleteProject(
         Request $request,
         EntityManagerInterface $entityManager,
         Project $project

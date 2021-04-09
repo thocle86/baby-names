@@ -10,6 +10,11 @@
     border: solid 10px var(--white);
 }
 
+.about-me-desktop {
+    display: flex;
+    flex-direction: column;
+}
+
 .about-me {
     display: flex;
     flex-direction: column;
@@ -26,6 +31,21 @@
     font-weight: 100;
 }
 
+.socialLinks {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.socialLinks img {
+    border-radius: 10%;
+    transition: 0.3s;
+}
+
+.socialLinks img:hover {
+    transform: scale(1.3);
+}
+
 @media screen and (max-width: 979px) {
     .pf-about-me {
         top: 10px;
@@ -39,7 +59,7 @@
     }
 
     .about-me {
-        padding: 120px 10px 10px;
+        padding: 10px 20px;
     }
 
     .about-me h1 {
@@ -54,6 +74,11 @@
 
     .paragraph {
         padding-top: 10px;
+    }
+
+    .socialLinks img {
+        margin-top: 150px;
+        height: 50px;
     }
 }
 
@@ -81,6 +106,11 @@
 
     .paragraph {
         padding: 0 50px 10px 0;
+    }
+
+    .socialLinks img {
+        margin-top: 50px;
+        height: 50px;
     }
 }
 
