@@ -4,6 +4,7 @@
     --screen-desktop: 1199px;
     --primary-color: #4706FF;
     --secondary-color: #232323;
+    --secondary-color-transparent: rgba(35, 35, 35, 0.3);
     --white: #fff;
     --orange: #F5B041;
     --primary-title: 'Baumans', sans-serif;
