@@ -10,12 +10,22 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class ProjectType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('type', ChoiceType::class, [
+                'choices'  => [
+                    'mes projets' => 'mes projets',
+                    'projets pro' => 'projets pro',
+                ],
+                'expanded' => true,
+                'multiple' => false,
+            ])
             ->add('title', TextType::class)
             ->add('photo', FileType::class, [
                 'mapped' => false,
@@ -33,11 +43,10 @@ class ProjectType extends AbstractType
                 ],
             ])
             ->add('text', TextareaType::class)
-            ->add('linkWeb', TextType::class, ['required' => false])
-            ->add('linkGit', TextType::class, ['required' => false])
-            ->add('linkVideo', TextType::class, ['required' => false])
-            ->add('linkInfos', TextType::class, ['required' => false])
-            ->add('type', TextType::class)
+            ->add('linkWeb', UrlType::class, ['required' => false])
+            ->add('linkGit', UrlType::class, ['required' => false])
+            ->add('linkVideo', UrlType::class, ['required' => false])
+            ->add('linkInfos', UrlType::class, ['required' => false])
         ;
     }
 

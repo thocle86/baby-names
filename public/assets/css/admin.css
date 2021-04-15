@@ -1,0 +1,285 @@
+@import 'variables.css';
+
+/***TITRE FORMULAIRE___start***/
+.formAdmin h1 {
+    padding: 10px;
+    font-family: var(--primary-title);
+    color: var(--white);
+    text-align: center;
+}
+
+.formAdmin h1 span {
+    font-size: 120%;
+    color: var(--orange);
+}
+/***TITRE FORMULAIRE___end***/
+
+/***SELECT BUTTON___start***/
+.formAdmin select {
+    display: flex;
+    flex-direction: column;
+}
+/***SELECT BUTTON___end***/
+
+/***STRUCTURE___start***/
+.formAdmin form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 2vw;
+    background-color: transparent;
+}
+/***STRUCTURE___end***/
+
+/***LABEL___start***/
+.formAdmin label {
+    padding: 10px;
+    font-family: var(--primary-title);
+    font-weight: bold;
+    color: var(--white);
+}
+/***LABEL___end***/
+
+/***INPUT-TEXTAREA___start***/
+.formAdmin input,
+.formAdmin textarea {
+    padding: 10px;
+    background-color: transparent;
+    text-align: center;
+    border: none;
+    transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease; 
+    -webkit-transition: all 0.3s ease;
+    outline: none;
+    font-family: var(--primary-text);
+}
+
+.formAdmin input {
+    border-bottom: solid 1px var(--white);
+}
+
+.formAdmin textarea {
+    resize : none;
+    border: solid 1px var(--white);
+    min-height: 200px;
+}
+
+.formAdmin input:hover,
+.formAdmin textarea:hover {
+    background-color: var(--secondary-color-transparent);
+}
+
+.formAdmin input:focus,
+.formAdmin textarea:focus {
+    background-color: var(--secondary-color);
+    color: var(--white);
+}
+/***INPUT-TEXTAREA___end***/
+
+/***SEND BUTTON___start***/
+.formAdmin .button {
+    display: flex;
+    margin: 10px;
+}
+
+.formAdmin button {
+    width: 200px;
+    font-family: var(--primary-title);
+    padding: 10px;
+    border: solid 1px var(--white);
+    transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease; 
+    -webkit-transition: all 0.3s ease;
+}
+
+.formAdmin button:hover {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border: solid 1px var(--white);
+}
+
+.formAdmin button i {
+    padding-left: 10px;
+}
+/***SEND BUTTON___end***/
+
+/***ERROR AND HELP MESSAGES___start***/
+.formAdmin li,
+.formAdmin p {
+    padding: 5px 20px;
+    font-family: var(--primary-text);
+    color: var(--white);
+    font-style: italic;
+}
+
+/*error message*/
+.formAdmin li {
+    background-color: red;
+    list-style: none;
+}
+
+/*help message*/
+.formAdmin p {
+    background-color: blue;
+}
+/***ERROR AND HELP MESSAGES___end***/
+
+@media screen and (max-width: 499px) {
+    .formAdmin h1 {
+        font-size: 1.6rem;
+    }
+
+    .formAdmin form,
+    .formAdmin input,
+    .formAdmin textarea,
+    .formAdmin button {
+        font-size: 1.2rem;
+    }
+
+    .formAdmin form {
+        margin: 10px;
+    }
+
+    .formAdmin .button {
+        justify-content: center;
+    }
+
+    .formAdmin li,
+    .formAdmin p {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-width: 979px) {
+    .formAdmin h1 {
+        font-size: 1.8rem;
+    }
+
+    .formAdmin form,
+    .formAdmin input,
+    .formAdmin textarea,
+    .formAdmin button {
+        font-size: 1.3rem;
+    }
+
+    .formAdmin form {
+        width: 75%;
+    }
+
+    .formAdmin .button {
+        justify-content: flex-end;
+        padding-top: 30px;
+    }
+
+    .formAdmin li,
+    .formAdmin p {
+        font-size: 1.1rem;
+    }
+}
+
+@media screen and (min-width: 980px) {
+    .formAdmin h1 {
+        font-size: 1.8rem;
+    }
+
+    .formAdmin form,
+    .formAdmin input,
+    .formAdmin textarea,
+    .formAdmin button {
+        font-size: 1.4rem;
+    }
+
+    .formAdmin form {
+        width: 50%;
+    }
+
+    .formAdmin .button {
+        justify-content: flex-end;
+        padding-top: 50px;
+    }
+
+    .formAdmin li,
+    .formAdmin p {
+        font-size: 1.2rem;
+    }
+}
+
+/***BUTTON POSITION___start***/
+.cont-add-about-me,
+.cont-del-edit-about-me,
+.cont-add-project {
+    position: fixed;
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.container-delete-edit {
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cont-del-edit-social-links {
+    flex-direction: column;
+}
+
+.cont-del-edit-project {
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+}
+/***BUTTON POSITION___end***/
+
+/***BUTTON DESIGN___start***/
+.buttons-admin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 60px;
+    border: solid 2px var(--secondary-color);
+    border-radius: 50%;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.buttons-admin:hover {
+    transform: scale(1.1);
+    border: solid 2px var(--white);
+}
+
+.button-add {
+    background-color: yellow;
+    color: var(--secondary-color);
+}
+.button-delete {
+    background-color: red;
+    color: var(--white);
+}
+
+.button-edit {
+    background-color: blue;
+    color: var(--white);
+}
+/***BUTTON DESIGN___end***/
+
+/***BUTTON EXCEPTION___start***/
+.cont-del-edit-about-me .buttons-admin {
+    margin: 10px;
+}
+
+.cont-del-edit-social-links .buttons-admin {
+    height: 40px;
+    width: 40px;
+    font-size: 1rem;
+    margin: 5px;
+}
+
+.cont-del-edit-project .button-edit {
+    margin-right: 20px;
+}
+/***BUTTON EXCEPTION___end***/

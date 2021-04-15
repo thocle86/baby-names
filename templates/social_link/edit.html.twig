@@ -1,14 +1,36 @@
-{{ form_start(form) }}
+{% extends 'base.html.twig' %}
 
-    {{ form_label(form.name) }}
-    {{ form_widget(form.name) }}
+{% block title %}Modification{% endblock %}
 
-    {{ form_label(form.link) }}
-    {{ form_widget(form.link) }}
+{% block main %}
+    <section class="formAdmin">
+        <h1>
+            Formulaire de modification de la partie<br>
+            <span><i class="fas fa-angle-double-left"></i>
+                Réseaux Sociaux
+            <i class="fas fa-angle-double-right"></i></span>
+        </h1>
+        {{ form_start(form) }}
 
-    {{ form_label(form.logo) }}
-    {{ form_widget(form.logo) }}
+            {{ form_label(form.name) }}
+            {{ form_errors(form.name) }}
+            {{ form_widget(form.name) }}
+            {{ form_help(form.name) }}
 
-    <input type='submit' value='Envoyer'>
+            {{ form_label(form.link) }}
+            {{ form_errors(form.link) }}
+            {{ form_widget(form.link) }}
+            {{ form_help(form.link) }}
 
-{{ form_end(form) }}
+            {{ form_label(form.logo) }}
+            {{ form_errors(form.logo) }}
+            {{ form_widget(form.logo) }}
+            {{ form_help(form.logo) }}
+
+            <div class="button">
+                <button>Valider</button>
+            </div>
+
+        {{ form_end(form) }}
+    </section>
+{% endblock %}

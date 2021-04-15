@@ -23,8 +23,7 @@ class ProjectController extends AbstractController
     ): Response {
         return $this->render('project/index.html.twig', [
             'controller_name' => 'ProjectController',
-            'myProjects' => $projectRepository->findBy(['type' => 'mes projets']),
-            'projectPros' => $projectRepository->findBy(['type' => 'projets pro'])
+            'projects' => $projectRepository->findAll()
         ]);
     }
 

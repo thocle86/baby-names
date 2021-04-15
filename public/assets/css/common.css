@@ -66,11 +66,6 @@ body {
 
 @media screen and (min-width: 980px) {
     .title-page {
-        /*padding: 20px;
-        height: 100px;
-        font-size: 2rem;
-        text-align: center;
-        letter-spacing: 10px;*/
         display: none;
     }
 
@@ -96,6 +91,14 @@ body {
     color: var(--secondary-color);
     border-radius: 50%;
     border: solid 2px var(--secondary-color);
+    transition: all 0.3s ease;
+}
+
+.logout:hover {
+    transform: scale(1.1);
+    background-color: var(--secondary-color);
+    border: solid 2px var(--orange);
+    color: var(--orange);
 }
 
 .logout i {
@@ -116,4 +119,17 @@ body {
         height: 80px;
         font-size: 2.2rem;
     }
+}
+
+.succes-send {
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    padding: 10px;
+    background-color: rgb(165, 250, 165);
+    font-family: var(--primary-text);
+    font-size: 1.5rem;
+    color: green;
+    text-align: center;
 }

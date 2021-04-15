@@ -16,14 +16,41 @@
                 {% endif %}
             </section>
         </section>
-        <section>
+        {% if app.user and is_granted("ROLE_ADMIN") %}
+            {% if aboutMe is empty %}
+                <div class="container-add cont-add-about-me">
+                    <a href="{{ path('about_me_new') }}">
+                        <button type="submit" class="buttons-admin button-add">
+                            <i class="fas fa-plus"></i>
+                        </button>  
+                    </a>
+                </div>
+            {% endif %}
+            {% if aboutMe is not empty %}
+                <div class="container-delete-edit cont-del-edit-about-me">
+                    <a href="{{ path('about_me_edit', {'id': aboutMe[0].id }) }}">
+                        <button type="submit" class="buttons-admin button-edit">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                    </a>
+                    <form method="post" action="{{ path('about_me_delete', {'id' : aboutMe[0].id}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir supprimer le contenu?');">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ aboutMe[0].id) }}">
+                        <button type="submit" class="buttons-admin button-delete">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </form>
+                </div>
+            {% endif %}
+        {% endif %}
+        <section class="cont-about-me-desktop">
             <section class="about-me-desktop">
                 <div class="picture-frame pf-about-me pf-desktop">
                     {% if aboutMe %}
                         <img src="assets/upload/{{ aboutMe[0].avatar }}" />
                     {% endif %}
                 </div>
-                <div class="socialLinks">
+                <div class="social-links">
                     {% if socialLinks is not empty %}
                         {% for socialLink in socialLinks %}
                             <div>
@@ -31,26 +58,38 @@
                                     <img src="assets/upload/{{ socialLink.logo }}" />
                                 </a>
                                 {% if app.user and is_granted("ROLE_ADMIN") %}
-                                    <div class="buttons-admin">
-                                        {% if socialLink is empty %}
-                                            <a href="{{ path('social_link_new') }}">
-                                                <input type="button" value="Nouveau" class="button-add">
-                                            </a>
-                                        {% endif %}
-                                        {% if socialLink is not empty %}
+                                    {% if socialLink is not empty %}
+                                        <div class="container-delete-edit cont-del-edit-social-links">
+                                            <div class="container-delete-edit cont-del-edit-social-links">
+                                                <a href="{{ path('social_link_edit', {'id': socialLink.id }) }}">
+                                                    <button type="submit" class="buttons-admin button-edit">
+                                                        <i class="fas fa-pencil-alt"></i>
+                                                    </button>
+                                                </a>
+                                            </div>
                                             <form method="post" action="{{ path('social_link_delete', {'id' : socialLink.id}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir supprimer le contenu?');">
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ socialLink.id) }}">
-                                                <input type="submit" value="Supprimer" class="button-delete">
+                                                <button type="submit" class="buttons-admin button-delete">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
                                             </form>
-                                            <a href="{{ path('social_link_edit', {'id': socialLink.id }) }}">
-                                                <input type="button" value="Editer" class="button-edit">
-                                            </a>
-                                        {% endif %}
-                                    </div>
+                                        </div>
+                                    {% endif %}
                                 {% endif %}
                             </div>
                         {% endfor %}
+                    {% endif %}
+                    {% if app.user and is_granted("ROLE_ADMIN") %}
+                        {% if socialLinks|length < 5 %}
+                            <div class="container-add cont-add-social-links">
+                                <a href="{{ path('social_link_new') }}">
+                                    <button type="submit" class="buttons-admin button-add">
+                                        <i class="fas fa-plus"></i>
+                                    </button>  
+                                </a>
+                            </div>
+                        {% endif %}
                     {% endif %}
                 </div>
             </section>
@@ -64,24 +103,5 @@
                 {% endif %}
             </section>
         </section>
-        {% if app.user and is_granted("ROLE_ADMIN") %}
-            <div class="buttons-admin">
-                {% if aboutMe is empty %}
-                    <a href="{{ path('about_me_new') }}">
-                        <input type="button" value="Nouveau" class="button-add">
-                    </a>
-                {% endif %}
-                {% if aboutMe is not empty %}
-                    <form method="post" action="{{ path('about_me_delete', {'id' : aboutMe[0].id}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir supprimer le contenu?');">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ aboutMe[0].id) }}">
-                        <input type="submit" value="Supprimer" class="button-delete">
-                    </form>
-                    <a href="{{ path('about_me_edit', {'id': aboutMe[0].id }) }}">
-                        <input type="button" value="Editer" class="button-edit">
-                    </a>
-                {% endif %}
-            </div>
-        {% endif %}
     </main>
 {% endblock %}

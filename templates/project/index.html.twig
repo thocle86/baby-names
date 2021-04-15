@@ -11,94 +11,60 @@
         <section class="title-page tp-project">
             <h1>Mon portfolio</h1>
         </section>
-        <section>
-            <h2 class="sub-title">MES projets</h2>
-            {% if myProjects is not empty %}
-                {% for myProject in myProjects %}
+        {% if app.user and is_granted("ROLE_ADMIN") %}
+            <div class="container-add cont-add-project">
+                <a href="{{ path('project_new') }}">
+                    <button type="submit" class="buttons-admin button-add">
+                        <i class="fas fa-plus"></i>
+                    </button>  
+                </a>
+            </div>
+        {% endif %}
+        <section class="content-page content-project">
+            {% if projects is not empty %}
+                {% for project in projects %}
                     <article class="project">
-                        <h3 class="project-title pt-mobile">{{ myProject.title }}</h3>
+                        <h3 class="project-title pt-mobile">{{ project.title }}</h3>
                         <div class="picture-frame pf-project">
-                            <img src="/assets/upload/{{ myProject.photo }}" />
+                            <img src="/assets/upload/{{ project.photo }}" />
                         </div>
                         <div>
-                            <h3 class="project-title pt-desktop">{{ myProject.title }}</h3>
-                            <p>{{ myProject.text }}</p>
+                            <h3 class="project-title pt-desktop">{{ project.title }}</h3>
+                            <p>{{ project.text }}</p>
                             <div class="project-links">
-                                <a href="{{ myProject.linkWeb }}" target="blank"><i class="fas fa-globe"></i></a>
-                                <a href="{{ myProject.linkGit }}" target="blank"><i class="fab fa-github"></i></a>
-                                <a href="{{ myProject.linkVideo }}" target="blank"><i class="fas fa-play-circle"></i></a>
-                                <a href="{{ myProject.linkInfos }}" target="blank"><i class="fas fa-info-circle"></i></a>
+                                <a href="{{ project.linkWeb }}" target="blank">
+                                    <i class="fas fa-globe"></i>
+                                </a>
+                                <a href="{{ project.linkGit }}" target="blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="{{ project.linkVideo }}" target="blank">
+                                    <i class="fas fa-play-circle"></i>
+                                </a>
+                                <a href="{{ project.linkInfos }}" target="blank">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
                             </div>
                         </div>
-                    </article>
-                    {% if app.user and is_granted("ROLE_ADMIN") %}
-                        <div class="buttons-admin">
-                            {% if myProject is empty %}
-                                <a href="{{ path('project_new') }}">
-                                    <input type="button" value="Nouveau" class="button-add">
-                                </a>
-                            {% endif %}
-                            {% if myProject is not empty %}
-                                <form method="post" action="{{ path('project_delete', {'id' : myProject.id}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir supprimer le contenu?');">
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ myProject.id) }}">
-                                    <input type="submit" value="Supprimer" class="button-delete">
-                                </form>
-                                <a href="{{ path('project_edit', {'id': myProject.id }) }}">
-                                    <input type="button" value="Editer" class="button-edit">
-                                </a>
-                            {% endif %}
-                        </div>
-                    {% endif %}
-                    <div class="line"></div>
-                {% endfor %}
-            {% else %}
-                <h3 class="work-in-progress">
-                    🚧 🚧 🚧<br>
-                    EN TRAVAUX<br>
-                    🚧 🚧 🚧<br>
-                </h3>
-            {% endif %}
-        </section>
-        <section>
-            <h2 class="sub-title">Projets PRO</h2>
-            {% if projectPros is not empty %}
-                {% for projectPro in projectPros %}
-                    <article class="project">
-                        <h3 class="project-title pt-mobile">{{ projectPro.title }}</h3>
-                        <div class="picture-frame pf-project">
-                            <img src="/assets/upload/{{ projectPro.photo }}" />
-                        </div>
-                        <div>
-                            <h3 class="project-title pt-desktop">{{ projectPro.title }}</h3>
-                            <p>{{ projectPro.text }}</p>
-                            <div class="project-links">
-                                <a href="{{ projectPro.linkWeb }}" target="blank"><i class="fas fa-globe"></i></a>
-                                <a href="{{ projectPro.linkGit }}" target="blank"><i class="fab fa-github"></i></a>
-                                <a href="{{ projectPro.linkVideo }}" target="blank"><i class="fas fa-play-circle"></i></a>
-                                <a href="{{ projectPro.linkInfos }}" target="blank"><i class="fas fa-info-circle"></i></a>
+                        {% if app.user and is_granted("ROLE_ADMIN") %}
+                            <div class="container-delete-edit cont-del-edit-project">
+                                {% if project is not empty %}
+                                    <a href="{{ path('project_edit', {'id': project.id }) }}">
+                                        <button type="submit" class="buttons-admin button-edit">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </button>
+                                    </a>
+                                    <form method="post" action="{{ path('project_delete', {'id' : project.id}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir supprimer le contenu?');">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ project.id) }}">
+                                        <button type="submit" class="buttons-admin button-delete">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </form>
+                                {% endif %}
                             </div>
-                        </div>
+                        {% endif %}
                     </article>
-                    {% if app.user and is_granted("ROLE_ADMIN") %}
-                        <div class="buttons-admin">
-                            {% if projectPro is empty %}
-                                <a href="{{ path('project_new') }}">
-                                    <input type="button" value="Nouveau" class="button-add">
-                                </a>
-                            {% endif %}
-                            {% if projectPro is not empty %}
-                                <form method="post" action="{{ path('project_delete', {'id' : projectPro.id}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir revenir au carousel par défaut?');">
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ projectPro.id) }}">
-                                    <input type="submit" value="Supprimer" class="button-delete">
-                                </form>
-                                <a href="{{ path('project_edit', {'id': projectPro.id }) }}">
-                                    <input type="button" value="Editer" class="button-edit">
-                                </a>
-                            {% endif %}
-                        </div>
-                    {% endif %}
                     <div class="line"></div>
                 {% endfor %}
             {% else %}
