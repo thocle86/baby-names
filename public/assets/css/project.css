@@ -9,7 +9,7 @@
 }
 
 .project-title {
-    font-family: var(--secondary-title);
+    font-family: var(--primary-title);
     font-weight: 100;
     color: var(--white);
     text-align: center;
@@ -63,7 +63,7 @@
     }
 
     .project-title {
-        font-size: 3rem;
+        font-size: 2rem;
     }
 
     .pt-desktop {
@@ -94,6 +94,10 @@
 }
 
 @media screen and (min-width: 980px) {
+    .content-project > :nth-child(1) {
+        padding-top: 100px;
+    }
+
     .cont-project .sub-title {
         padding: 50px 10px 20px;
     }
@@ -115,7 +119,7 @@
     }
 
     .project-title {
-        font-size: 3rem;
+        font-size: 2.5rem;
     }
 
     .pt-mobile {
@@ -158,6 +162,6 @@
     }
 
     .project-title {
-        font-size: 3.3rem;
+        font-size: 3rem;
     }
 }

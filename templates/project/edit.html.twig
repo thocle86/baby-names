@@ -1,26 +1,61 @@
-{{ form_start(form) }}
+{% extends 'base.html.twig' %}
 
-    {{ form_label(form.title) }}
-    {{ form_widget(form.title) }}
+{% block title %}Modification{% endblock %}
 
-    {{ form_label(form.photo) }}
-    {{ form_widget(form.photo) }}
+{% block main %}
+    <section class="formAdmin">
+        <h1>
+            Formulaire de modification de la partie<br>
+            <span><i class="fas fa-angle-double-left"></i>
+                Mon portfolio
+            <i class="fas fa-angle-double-right"></i></span>
+        </h1>
+        {{ form_start(form) }}
 
-    {{ form_label(form.text) }}
-    {{ form_widget(form.text) }}
+            {{ form_label(form.type) }}
+            {{ form_errors(form.type) }}
+            {{ form_widget(form.type) }}
+            {{ form_help(form.type) }}
 
-    {{ form_label(form.linkWeb) }}
-    {{ form_widget(form.linkWeb) }}
+            {{ form_label(form.title) }}
+            {{ form_errors(form.title) }}
+            {{ form_widget(form.title) }}
+            {{ form_help(form.title) }}
 
-    {{ form_label(form.linkGit) }}
-    {{ form_widget(form.linkGit) }}
+            {{ form_label(form.photo) }}
+            {{ form_errors(form.photo) }}
+            {{ form_widget(form.photo) }}
+            {{ form_help(form.photo) }}
 
-    {{ form_label(form.linkVideo) }}
-    {{ form_widget(form.linkVideo) }}
+            {{ form_label(form.text) }}
+            {{ form_errors(form.text) }}
+            {{ form_widget(form.text) }}
+            {{ form_help(form.text) }}
 
-    {{ form_label(form.linkInfos) }}
-    {{ form_widget(form.linkInfos) }}
+            {{ form_label(form.linkWeb) }}
+            {{ form_errors(form.linkWeb) }}
+            {{ form_widget(form.linkWeb) }}
+            {{ form_help(form.linkWeb) }}
 
-    <input type='submit' value='Envoyer'>
+            {{ form_label(form.linkGit) }}
+            {{ form_errors(form.linkGit) }}
+            {{ form_widget(form.linkGit) }}
+            {{ form_help(form.linkGit) }}
 
-{{ form_end(form) }}
+            {{ form_label(form.linkVideo) }}
+            {{ form_errors(form.linkVideo) }}
+            {{ form_widget(form.linkVideo) }}
+            {{ form_help(form.linkVideo) }}
+
+            {{ form_label(form.linkInfos) }}
+            {{ form_errors(form.linkInfos) }}
+            {{ form_widget(form.linkInfos) }}
+            {{ form_help(form.linkInfos) }}
+
+            <div class="button">
+                <button>Valider</button>
+            </div>
+
+        {{ form_end(form) }}
+    </section>
+{% endblock %}
