@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/techno.css" />
+{% endblock %}
+
+{% block title %}Modification{% endblock %}
+
+{% block main %}
+    <section class="formAdmin">
+        <h1>
+            Formulaire de modification des<br>
+            <span><i class="fas fa-angle-double-left"></i>
+                Technologies
+            <i class="fas fa-angle-double-right"></i></span>
+        </h1>
+        <div class="list-techno">
+            {% if technos is not empty %}
+                {% for techno in technos %}
+                    <div class="techno">
+                        <div class="picture-frame pf-techno">
+                            <img src="/assets/upload/{{ techno.logo }}" />
+                        </div>
+                        {% if app.user and is_granted("ROLE_ADMIN") %}
+                            {% if techno is not empty %}
+                                <div class="container-delete-edit cont-del-edit-techno">
+                                    <a href="{{ path('techno_edit', {'id': techno.id }) }}">
+                                        <button type="submit" class="buttons-admin button-edit">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </button>
+                                    </a>
+                                    <form method="post" action="{{ path('techno_delete', {'id' : techno.id}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir supprimer le contenu?');">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ techno.id) }}">
+                                        <button type="submit" class="buttons-admin button-delete">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h2>Aucune techno trouvée</h2>
+            {% endif %}
+        </div>
+        {{ form_start(form, {'attr' : {'class' : 'formContent'}}) }}
+
+            {{ form_label(form.name) }}
+            {{ form_errors(form.name) }}
+            {{ form_widget(form.name) }}
+            {{ form_help(form.name) }}
+
+            {{ form_label(form.logo) }}
+            {{ form_errors(form.logo) }}
+            {{ form_widget(form.logo) }}
+            {{ form_help(form.logo) }}
+
+            <div class="button">
+                <button class="btn-valid">Valider</button>
+            </div>
+
+        {{ form_end(form) }}
+    </section>
+{% endblock %}

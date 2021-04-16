@@ -12,6 +12,8 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Techno;
 
 class ProjectType extends AbstractType
 {
@@ -20,8 +22,8 @@ class ProjectType extends AbstractType
         $builder
             ->add('type', ChoiceType::class, [
                 'choices'  => [
-                    'mes projets' => 'mes projets',
-                    'projets pro' => 'projets pro',
+                    'PERSO' => 'mes projets',
+                    'PRO' => 'projets pro',
                 ],
                 'expanded' => true,
                 'multiple' => false,
@@ -47,6 +49,13 @@ class ProjectType extends AbstractType
             ->add('linkGit', UrlType::class, ['required' => false])
             ->add('linkVideo', UrlType::class, ['required' => false])
             ->add('linkInfos', UrlType::class, ['required' => false])
+            ->add('technos', EntityType::class, [
+                'class' => Techno::class,
+                'choice_label' => 'name',
+                'multiple' => true,
+                'expanded' => true,
+                'by_reference' => false,
+            ])
         ;
     }
 

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProjectRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -56,6 +58,16 @@ class Project
      * @ORM\Column(type="string", length=255)
      */
     private $type;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Techno::class, mappedBy="project")
+     */
+    private $technos;
+
+    public function __construct()
+    {
+        $this->technos = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -154,6 +166,33 @@ class Project
     public function setType(string $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Techno[]
+     */
+    public function getTechnos(): Collection
+    {
+        return $this->technos;
+    }
+
+    public function addTechno(Techno $techno): self
+    {
+        if (!$this->technos->contains($techno)) {
+            $this->technos[] = $techno;
+            $techno->addProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTechno(Techno $techno): self
+    {
+        if ($this->technos->removeElement($techno)) {
+            $techno->removeProject($this);
+        }
 
         return $this;
     }

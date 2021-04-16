@@ -8,6 +8,10 @@
     border-radius: 10px;
 }
 
+.line {
+    background-color: var(--secondary-color);
+}
+
 .project-title {
     font-family: var(--primary-title);
     font-weight: 100;
@@ -15,7 +19,7 @@
     text-align: center;
 }
 
-.project > :nth-child(3) {
+.project-text {
     padding: 10px;
     border-radius: 10px;
     background-color: var(--secondary-color);
@@ -24,8 +28,17 @@
     text-align: center;
 }
 
-.line {
-    background-color: var(--secondary-color);
+.project-techno {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white);
+    border-radius: 5px;
+}
+
+.project-techno img {
+    height: 60px;
+    padding: 10px;
 }
 
 .project-links {
@@ -70,12 +83,20 @@
         display: none;
     }
 
-    .project > :nth-child(3) {
+    .project-text {
         display: flex;
         flex-direction: column;
         width: 90vw;
         margin: 10px auto;
         font-size: 1.2rem;
+    }
+
+    .project-techno img {
+        height: 50px;
+    }
+
+    .project-paragraph {
+        padding: 10px 0;
     }
 
     .line {
@@ -126,10 +147,19 @@
         display: none;
     }
 
-    .project > :nth-child(3) {
+    .project-text {
         display: grid;
-        grid-template-rows: 2fr 4fr 1fr;
+        grid-template-rows: 1fr 5fr 1fr;
         font-size: 1.4rem;
+    }
+
+    .project-techno img {
+        height: 70px;
+    }
+
+    .project-paragraph {
+        display: flex;
+        align-items: center;
     }
 
     .line {
