@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\AboutMeRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=AboutMeRepository::class)
@@ -19,26 +20,58 @@ class AboutMe
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      max = 255,
+     *      maxMessage = "Le chemin vers le fichier est trop long, il dépasse {{ limit }} caractères"
+     * )
      */
     private $avatar;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 255,
+     *      minMessage = "Le titre doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le titre ne peut pas faire plus de {{ limit }} caractères"
+     * )
      */
     private $myJobTitle;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string", length=1000)
+     * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 1000,
+     *      minMessage = "Le texte doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le texte ne peut pas faire plus de {{ limit }} caractères"
+     * )
      */
     private $myJobText;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 255,
+     *      minMessage = "Le titre doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le titre ne peut pas faire plus de {{ limit }} caractères"
+     * )
      */
     private $myNewsTitle;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string", length=1000)
+     * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 1000,
+     *      minMessage = "Le texte doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le texte ne peut pas faire plus de {{ limit }} caractères"
+     * )
      */
     private $myNewsText;
 

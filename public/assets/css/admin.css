@@ -122,19 +122,20 @@
 .formAdmin p {
     padding: 5px 20px;
     font-family: var(--primary-text);
-    color: var(--white);
+    background-color: var(--white);
     font-style: italic;
+    border-radius: 5px;
 }
 
 /*error message*/
 .formAdmin li {
-    background-color: red;
+    color: red;
     list-style: none;
 }
 
 /*help message*/
 .formAdmin p {
-    background-color: blue;
+    color: blue;
 }
 /***ERROR AND HELP MESSAGES___end***/
 

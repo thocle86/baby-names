@@ -22,13 +22,13 @@ class ProjectType extends AbstractType
         $builder
             ->add('type', ChoiceType::class, [
                 'choices'  => [
-                    'PERSO' => 'mes projets',
-                    'PRO' => 'projets pro',
+                    'PERSO' => 'perso',
+                    'PRO' => 'pro',
                 ],
                 'expanded' => true,
                 'multiple' => false,
             ])
-            ->add('title', TextType::class)
+            ->add('title', TextType::class, ['required' => false])
             ->add('photo', FileType::class, [
                 'mapped' => false,
                 'required' => false,
@@ -44,7 +44,7 @@ class ProjectType extends AbstractType
                     ])
                 ],
             ])
-            ->add('text', TextareaType::class)
+            ->add('text', TextareaType::class, ['required' => false])
             ->add('linkWeb', UrlType::class, ['required' => false])
             ->add('linkGit', UrlType::class, ['required' => false])
             ->add('linkVideo', UrlType::class, ['required' => false])
