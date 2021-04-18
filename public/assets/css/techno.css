@@ -1,0 +1,46 @@
+@import 'variable.css';
+
+.list-techno {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto 10px;
+    background-color: var(--white);
+    border-radius: 10px;
+    border: solid 2px var(--secondary-color);
+}
+
+.techno {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/*
+.pf-techno {
+    border-radius: 50%;
+    padding: 20px;
+    background-color: var(--white);
+}*/
+
+@media screen and (max-width: 979px) {
+    .list-techno {
+        width: 90%;
+    }
+
+    .pf-techno {
+        height: 60px;
+        padding: 10px;
+    }
+}
+
+@media screen and (min-width: 980px) {
+    .list-techno {
+        width: 80%;
+    }
+
+    .pf-techno {
+        height: 100px;
+        padding: 20px;
+    }
+}

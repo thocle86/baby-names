@@ -10,7 +10,7 @@
                 Mon portfolio
             <i class="fas fa-angle-double-right"></i></span>
         </h1>
-        {{ form_start(form) }}
+        {{ form_start(form, {'attr' : {'class' : 'formContent'}}) }}
 
             {{ form_label(form.type) }}
             {{ form_errors(form.type) }}
@@ -21,6 +21,13 @@
             {{ form_errors(form.title) }}
             {{ form_widget(form.title) }}
             {{ form_help(form.title) }}
+
+            <div class="form-technos-container">
+                {{ form_label(form.technos) }}
+                {{ form_errors(form.technos) }}
+                {{ form_widget(form.technos, {'attr' : {'class' : 'form-technos-list'}}) }}
+                {{ form_help(form.technos) }}
+            </div>
 
             {{ form_label(form.photo) }}
             {{ form_errors(form.photo) }}
@@ -53,7 +60,7 @@
             {{ form_help(form.linkInfos) }}
 
             <div class="button">
-                <button>Valider</button>
+                <button class="btn-valid">Valider</button>
             </div>
 
         {{ form_end(form) }}

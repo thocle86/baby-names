@@ -10,7 +10,7 @@
                 Réseaux Sociaux
             <i class="fas fa-angle-double-right"></i></span>
         </h1>
-        {{ form_start(form) }}
+        {{ form_start(form, {'attr' : {'class' : 'formContent'}}) }}
 
             {{ form_label(form.name) }}
             {{ form_errors(form.name) }}
@@ -28,7 +28,7 @@
             {{ form_help(form.logo) }}
 
             <div class="button">
-                <button>Valider</button>
+                <button class="btn-valid">Valider</button>
             </div>
 
         {{ form_end(form) }}

@@ -14,23 +14,34 @@
         {% if app.user and is_granted("ROLE_ADMIN") %}
             <div class="container-add cont-add-project">
                 <a href="{{ path('project_new') }}">
-                    <button type="submit" class="buttons-admin button-add">
-                        <i class="fas fa-plus"></i>
+                    <button type="submit" class="buttons-admin button-add btn-add-project">
+                        <i class="fas fa-plus"></i>PROJET
                     </button>  
+                </a>
+                <a href="{{ path('techno_new') }}">
+                    <button type="submit" class="buttons-admin button-add btn-add-techno">
+                        <i class="fas fa-plus"></i>TECHNO
+                    </button>
                 </a>
             </div>
         {% endif %}
         <section class="content-page content-project">
             {% if projects is not empty %}
                 {% for project in projects %}
+                    <h3 class="project-title">{{ project.title }}</h3>
                     <article class="project">
-                        <h3 class="project-title pt-mobile">{{ project.title }}</h3>
                         <div class="picture-frame pf-project">
                             <img src="/assets/upload/{{ project.photo }}" />
                         </div>
-                        <div>
-                            <h3 class="project-title pt-desktop">{{ project.title }}</h3>
-                            <p>{{ project.text }}</p>
+                        <div class="project-text">
+                            <div class="project-techno">
+                                {% for techno in project.technos %}
+                                    <img src="/assets/upload/{{techno.logo}}" />
+                                {% endfor %}
+                            </div>
+                            <div class="project-paragraph">
+                                <p>{{ project.text }}</p>
+                            </div>
                             <div class="project-links">
                                 <a href="{{ project.linkWeb }}" target="blank">
                                     <i class="fas fa-globe"></i>

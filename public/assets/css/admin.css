@@ -1,4 +1,4 @@
-@import 'variables.css';
+@import 'variable.css';
 
 /***TITRE FORMULAIRE___start***/
 .formAdmin h1 {
@@ -22,7 +22,7 @@
 /***SELECT BUTTON___end***/
 
 /***STRUCTURE___start***/
-.formAdmin form {
+.formAdmin .formContent {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -76,13 +76,27 @@
 }
 /***INPUT-TEXTAREA___end***/
 
+/***TECHNOS___start***/
+.form-technos-container {
+    margin: 10px 0;
+}
+
+.form-technos-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: solid 1px var(--white);
+}
+/***TECHNOS___end***/
+
 /***SEND BUTTON___start***/
 .formAdmin .button {
     display: flex;
     margin: 10px;
 }
 
-.formAdmin button {
+.formAdmin .btn-valid {
     width: 200px;
     font-family: var(--primary-title);
     padding: 10px;
@@ -92,13 +106,13 @@
     -webkit-transition: all 0.3s ease;
 }
 
-.formAdmin button:hover {
+.formAdmin .btn-valid:hover {
     background-color: var(--secondary-color);
     color: var(--white);
     border: solid 1px var(--white);
 }
 
-.formAdmin button i {
+.formAdmin .btn-valid i {
     padding-left: 10px;
 }
 /***SEND BUTTON___end***/
@@ -129,10 +143,10 @@
         font-size: 1.6rem;
     }
 
-    .formAdmin form,
+    .formAdmin .formContent,
     .formAdmin input,
     .formAdmin textarea,
-    .formAdmin button {
+    .formAdmin .btn-valid {
         font-size: 1.2rem;
     }
 
@@ -155,14 +169,14 @@
         font-size: 1.8rem;
     }
 
-    .formAdmin form,
+    .formAdmin .formContent,
     .formAdmin input,
     .formAdmin textarea,
-    .formAdmin button {
+    .formAdmin .btn-valid {
         font-size: 1.3rem;
     }
 
-    .formAdmin form {
+    .formAdmin .formContent {
         width: 75%;
     }
 
@@ -182,14 +196,14 @@
         font-size: 1.8rem;
     }
 
-    .formAdmin form,
+    .formAdmin .formContent,
     .formAdmin input,
     .formAdmin textarea,
-    .formAdmin button {
+    .formAdmin .btn-valid {
         font-size: 1.4rem;
     }
 
-    .formAdmin form {
+    .formAdmin .formContent {
         width: 50%;
     }
 
@@ -223,7 +237,8 @@
     align-items: center;
 }
 
-.cont-del-edit-social-links {
+.cont-del-edit-social-links,
+.cont-del-edit-techno {
     flex-direction: column;
 }
 
@@ -268,11 +283,13 @@
 /***BUTTON DESIGN___end***/
 
 /***BUTTON EXCEPTION___start***/
-.cont-del-edit-about-me .buttons-admin {
+.cont-del-edit-about-me .buttons-admin,
+.cont-add-project .buttons-admin {
     margin: 10px;
 }
 
-.cont-del-edit-social-links .buttons-admin {
+.cont-del-edit-social-links .buttons-admin,
+.cont-del-edit-techno .buttons-admin {
     height: 40px;
     width: 40px;
     font-size: 1rem;
@@ -281,5 +298,16 @@
 
 .cont-del-edit-project .button-edit {
     margin-right: 20px;
+}
+
+.btn-add-project,
+.btn-add-techno {
+    width: 200px;
+    border-radius: 30px;
+}
+
+.btn-add-techno {
+    background-color: rgb(43, 226, 141);
+    color: var(--secondary-color);
 }
 /***BUTTON EXCEPTION___end***/
