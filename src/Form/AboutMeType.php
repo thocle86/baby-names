@@ -31,10 +31,10 @@ class AboutMeType extends AbstractType
                     ])
                 ],
             ])
-            ->add('myJobTitle', TextType::class)
-            ->add('myJobText', TextareaType::class)
-            ->add('myNewsTitle', TextType::class)
-            ->add('myNewsText', TextareaType::class)
+            ->add('myJobTitle', TextType::class, ['required' => false])
+            ->add('myJobText', TextareaType::class, ['required' => false])
+            ->add('myNewsTitle', TextType::class, ['required' => false])
+            ->add('myNewsText', TextareaType::class, ['required' => false])
         ;
     }
 

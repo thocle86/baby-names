@@ -21,23 +21,21 @@
                         <div class="picture-frame pf-techno">
                             <img src="/assets/upload/{{ techno.logo }}" />
                         </div>
-                        {% if app.user and is_granted("ROLE_ADMIN") %}
-                            {% if techno is not empty %}
-                                <div class="container-delete-edit cont-del-edit-techno">
-                                    <a href="{{ path('techno_edit', {'id': techno.id }) }}">
-                                        <button type="submit" class="buttons-admin button-edit">
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </button>
-                                    </a>
-                                    <form method="post" action="{{ path('techno_delete', {'id' : techno.id}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir supprimer le contenu?');">
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ techno.id) }}">
-                                        <button type="submit" class="buttons-admin button-delete">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            {% endif %}
+                        {% if techno is not empty %}
+                            <div class="container-delete-edit cont-del-edit-techno">
+                                <a href="{{ path('techno_edit', {'id': techno.id }) }}">
+                                    <button type="submit" class="buttons-admin button-edit">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                </a>
+                                <form method="post" action="{{ path('techno_delete', {'id' : techno.id}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir supprimer le contenu?');">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ techno.id) }}">
+                                    <button type="submit" class="buttons-admin button-delete">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </form>
+                            </div>
                         {% endif %}
                     </div>
                 {% endfor %}

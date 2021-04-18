@@ -6,12 +6,15 @@ use App\Repository\ProjectRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ProjectRepository::class)
  */
 class Project
 {
+    public const TYPES = ['perso', 'pro'];
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -21,41 +24,80 @@ class Project
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 255,
+     *      minMessage = "Le titre doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le titre ne peut pas faire plus de {{ limit }} caractères"
+     * )
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      max = 255,
+     *      maxMessage = "Le chemin vers le fichier est trop long, il dépasse {{ limit }} caractères"
+     * )
      */
     private $photo;
 
     /**
      * @ORM\Column(type="string", length=1000)
+     * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 1000,
+     *      minMessage = "Le texte doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le texte ne peut pas faire plus de {{ limit }} caractères"
+     * )
      */
     private $text;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *      max = 255,
+     *      maxMessage = "Le lien est trop long, il dépasse {{ limit }} caractères"
+     * )
      */
     private $linkWeb;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *      max = 255,
+     *      maxMessage = "Le lien est trop long, il dépasse {{ limit }} caractères"
+     * )
      */
     private $linkGit;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *      max = 255,
+     *      maxMessage = "Le lien est trop long, il dépasse {{ limit }} caractères"
+     * )
      */
     private $linkVideo;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *      max = 255,
+     *      maxMessage = "Le lien est trop long, il dépasse {{ limit }} caractères"
+     * )
+     * 
      */
     private $linkInfos;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Choice(
+     *      choices=Project::TYPES,
+     *      message = "Type invalide"
+     * )
      */
     private $type;
 
