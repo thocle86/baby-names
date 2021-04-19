@@ -1,15 +1,14 @@
 @import 'variable.css';
 
 /***STRUCTURE___start***/
-.form {
+.contactForm {
     display: flex;
     flex-direction: column;
 }
 
 .message {
-    display: grid;
-    grid-template-rows: 1fr 5fr;
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
 /***STRUCTURE___end***/
 
@@ -29,6 +28,7 @@ label {
 /***INPUT-TEXTAREA___start***/
 .infos input,
 .message textarea {
+    margin-bottom: 10px;
     padding: 10px;
     background-color: transparent;
     text-align: center;
@@ -41,12 +41,12 @@ label {
 }
 
 .infos input {
-    margin: 10px;
     border-bottom: solid 1px var(--white);
 }
 
 .message textarea {
     resize : none;
+    height: 200px;
     border: solid 1px var(--white);
 }
 
@@ -89,6 +89,20 @@ button i {
 }
 /***SEND BUTTON___end***/
 
+.infos {
+    display: flex;
+    flex-direction: column;
+}
+
+.infos label {
+    text-align: left;
+    padding-bottom: 0;
+}
+
+.infos input {
+    margin-top: 0;
+}
+
 @media screen and (max-width: 499px) {
     form,
     .infos input,
@@ -99,21 +113,6 @@ button i {
 
     form {
         margin: 10px;
-    }
-
-    .infos {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .infos label {
-        text-align: left;
-        padding-bottom: 0;
-    }
-
-    .infos input {
-        margin-top: 0;
-        padding-top: 0;
     }
 
     .button {
@@ -134,23 +133,13 @@ button i {
         margin: 50px auto;
     }
 
-    .infos {
-        display: grid;
-        grid-template-columns: 1fr 3fr;
-    }
-
-    .infos label {
-        margin: 10px;
-        text-align: right;
-    }
-
     .button {
         justify-content: flex-end;
         padding-top: 30px;
     }
 }
 
-@media screen and (min-width: 980px) {
+@media screen and (min-width: 980px) and (max-width: 1299px) {
     form,
     .infos input,
     .message textarea,
@@ -159,22 +148,72 @@ button i {
     }
 
     form {
-        width: 50%;
-        margin: 100px auto;
+        width: 60%;
+        margin: 50px auto;
     }
 
-    .infos {
-        display: grid;
-        grid-template-columns: 1fr 3fr;
+    .button {
+        justify-content: flex-end;
+        padding-top: 30px;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    form,
+    .infos input,
+    .message textarea,
+    button {
+        font-size: 1.5rem;
     }
 
-    .infos label {
-        margin: 10px;
-        text-align: right;
+    form {
+        width: 40%;
+        margin: 50px auto;
     }
 
     .button {
         justify-content: flex-end;
         padding-top: 50px;
     }
+}
+
+.contactForm li,
+.contactForm p {
+    padding: 5px 20px;
+    font-family: var(--primary-text);
+    background-color: var(--white);
+    font-style: italic;
+    border-radius: 5px;
+}
+
+/*error message*/
+.contactForm li {
+    color: red;
+    list-style: none;
+}
+
+/*help message*/
+.contactForm p {
+    color: blue;
+}
+
+.send-message {
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    padding: 10px;
+    font-family: var(--primary-text);
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.send-success {
+    background-color: rgb(165, 250, 165);
+    color: green;
+}
+
+.send-warning {
+    background-color: rgb(250, 200, 200);
+    color: red;
 }

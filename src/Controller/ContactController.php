@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Form\ContactType;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 
 class ContactController extends AbstractController
 {
@@ -24,17 +25,20 @@ class ContactController extends AbstractController
         if($form->isSubmitted() && $form->isValid()) {
             $contactFormData = $form->getData();
             
-            $message = (new Email())
+            $email = (new Email())
                 ->from($contactFormData['email'])
                 ->to('contact@thomas-clement.com')
                 ->subject($contactFormData['subject'])
                 ->text(
-                    'Nom : '.$contactFormData['lastname'].\PHP_EOL.
-                    'Prénom : '.$contactFormData['firstname'].\PHP_EOL.
+                    'Emetteur : '.$contactFormData['transmitter'].\PHP_EOL.
                     $contactFormData['message'],
                     'text/plain');
-            $mailer->send($message);
-            $this->addFlash('success', 'Votre message a été envoyé avec succès 👍');
+            try {
+                $mailer->send($email);
+                $this->addFlash("success", "Votre message a été envoyé avec succès");
+            } catch (TransportExceptionInterface $e) {
+                $this->addFlash("warning", "Votre message n'a pas été envoyé, vérifier votre email");
+            }
             return $this->redirectToRoute('contact');
         }
         return $this->render('contact/index.html.twig', [
