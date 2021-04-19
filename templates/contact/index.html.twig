@@ -7,47 +7,41 @@
 {% block title %}Me contacter{% endblock %}
 
 {% block main %}
-    <main class="container cont-project">
+    <main class="container cont-contact">
         <section class="title-page tp-contact">
             <h1>Me contacter</h1>
         </section>
-        {% for category, messages in app.flashes %}
-            {% for message in messages %}
-                <div class="succes-send">
-                    <p>{{ message }}</p>
-                </div>
-            {% endfor %}
+        {% for message in app.flashes("success") %}
+            <div class="send-message send-success">
+                <p><i class="fas fa-thumbs-up"></i>   {{ message }}</p>
+            </div>
+        {% endfor %}
+        {% for message in app.flashes("warning") %}
+            <div class="send-message send-warning">
+                <p><i class="fas fa-exclamation-circle"></i>   {{ message }}</p>
+            </div>
         {% endfor %}
         <section>
             {{ form_start(form) }}
-                <div class="form">
+                <div class="contactForm">
                     <div class="infos">
+                        {{ form_label(form.transmitter, 'Emetteur') }}
+                        {{ form_errors(form.transmitter) }}
+                        {{ form_widget(form.transmitter) }}
+
                         {{ form_label(form.subject, 'Sujet') }}
                         {{ form_errors(form.subject) }}
                         {{ form_widget(form.subject) }}
-                        {{ form_help(form.subject) }}
-
-                        {{ form_label(form.lastname, 'Nom') }}
-                        {{ form_errors(form.lastname) }}
-                        {{ form_widget(form.lastname) }}
-                        {{ form_help(form.lastname) }}
-
-                        {{ form_label(form.firstname, 'Prénom') }}
-                        {{ form_errors(form.firstname) }}
-                        {{ form_widget(form.firstname) }}
-                        {{ form_help(form.firstname) }}
 
                         {{ form_label(form.email, 'Email') }}
                         {{ form_errors(form.email) }}
                         {{ form_widget(form.email) }}
-                        {{ form_help(form.email) }}
                     </div>
 
                     <div class="message">
                         {{ form_label(form.message, 'Message') }}
                         {{ form_errors(form.message) }}
                         {{ form_widget(form.message) }}
-                        {{ form_help(form.message) }}
                     </div>
                 </div>
                 <div class="button">

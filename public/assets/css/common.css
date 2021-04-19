@@ -120,16 +120,3 @@ body {
         font-size: 2.2rem;
     }
 }
-
-.succes-send {
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    margin: 20px;
-    padding: 10px;
-    background-color: rgb(165, 250, 165);
-    font-family: var(--primary-text);
-    font-size: 1.5rem;
-    color: green;
-    text-align: center;
-}
