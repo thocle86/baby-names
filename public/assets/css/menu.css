@@ -1,10 +1,11 @@
 @import 'variable.css';
 
-li {
+.menu li {
     list-style: none;
 }
 
-a {
+.menu a,
+.logout {
     text-decoration: none;
     font-family: var(--primary-title);
 }
@@ -73,6 +74,10 @@ a {
     .nav-menu a {
         font-size: 2rem;
         color: var(--white);
+    }
+
+    .menu-clear {
+        height: 90px;/*géré localement pour AboutMe*/
     }
 }
 

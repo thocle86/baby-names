@@ -52,6 +52,9 @@
         {% endif %}
         {% block main %}
         {% endblock %}
+        <footer>
+            {{ render(controller('App\\Controller\\FooterController::getAboutMe')) }}
+        </footer>
         <script src="/assets/js/menu.js"></script>
         {% block javascripts %}
         {% endblock %}
