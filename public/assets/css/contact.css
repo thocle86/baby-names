@@ -65,7 +65,7 @@ label {
 /***SEND BUTTON___start***/
 .button {
     display: flex;
-    margin: 10px;
+    margin: 10px 0;
 }
 
 button {
@@ -112,7 +112,7 @@ button i {
     }
 
     form {
-        margin: 10px;
+        padding: 10px;
     }
 
     .button {
@@ -130,12 +130,13 @@ button i {
 
     form {
         width: 80%;
-        margin: 50px auto;
+        margin: 0 auto;
+        padding: 40px 0 0;
     }
 
     .button {
         justify-content: flex-end;
-        padding-top: 30px;
+        padding-top: 20px;
     }
 }
 
@@ -149,12 +150,13 @@ button i {
 
     form {
         width: 60%;
-        margin: 50px auto;
+        margin: 0 auto;
+        padding: 60px 0 0;
     }
 
     .button {
         justify-content: flex-end;
-        padding-top: 30px;
+        padding-top: 25px;
     }
 }
 
@@ -168,12 +170,13 @@ button i {
 
     form {
         width: 40%;
-        margin: 50px auto;
+        margin: 0 auto;
+        padding: 80px 0 0;
     }
 
     .button {
         justify-content: flex-end;
-        padding-top: 50px;
+        padding-top: 30px;
     }
 }
 

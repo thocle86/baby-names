@@ -68,6 +68,14 @@
         font-weight: bold;
     }
 
+    .title-page {
+        height: 200px;
+    }
+
+    .menu-clear {
+        height: 200px;
+    }
+
     .sub-title {
         padding-top: 20px;
     }
@@ -111,6 +119,7 @@
     .social-links {
         margin-top: 50px;
     }
+
     .social-links img {
         height: 50px;
     }
