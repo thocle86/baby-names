@@ -17,4 +17,5 @@
 
 ###> assets ###
 /public/assets/upload/
+/public/lib/
 ###< assets ###
