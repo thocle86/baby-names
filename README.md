@@ -51,7 +51,10 @@ php bin/console d:d:c
 php bin/console d:m:m
 ```
 
-8. Go on the /init page and register you as an admin user : you have to put an email address and a password
+8. Download **fontawesome-free-5.15.3-web** and add it in the directory **lib** at next path: `public/assets/lib/`
+> You can to download a recent more version
+
+9. Go on the /init page and register you as an admin user : you have to put an email address and a password
 
 > Reminder: Don't use composer update to avoid problem
 
