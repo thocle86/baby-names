@@ -48,18 +48,26 @@
                                 <p>{{ project.text }}</p>
                             </div>
                             <div class="project-links">
-                                <a href="{{ project.linkWeb }}" target="blank">
-                                    <i class="fas fa-globe"></i>
-                                </a>
-                                <a href="{{ project.linkGit }}" target="blank">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="{{ project.linkVideo }}" target="blank">
-                                    <i class="fas fa-play-circle"></i>
-                                </a>
-                                <a href="{{ project.linkInfos }}" target="blank">
-                                    <i class="fas fa-info-circle"></i>
-                                </a>
+                                {% if project.linkWeb is not null %}
+                                    <a href="{{ project.linkWeb }}" target="blank">
+                                        <i class="fas fa-globe"></i>
+                                    </a>
+                                {% endif %}
+                                {% if project.linkGit is not null %}
+                                    <a href="{{ project.linkGit }}" target="blank">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                {% endif %}
+                                {% if project.linkVideo is not null %}
+                                    <a href="{{ project.linkVideo }}" target="blank">
+                                        <i class="fas fa-play-circle"></i>
+                                    </a>
+                                {% endif %}
+                                {% if project.linkInfos is not null %}
+                                    <a href="{{ project.linkInfos }}" target="blank">
+                                        <i class="fas fa-info-circle"></i>
+                                    </a>
+                                {% endif %}
                             </div>
                         </div>
                         {% if app.user and is_granted("ROLE_ADMIN") %}
