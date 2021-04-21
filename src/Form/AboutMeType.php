@@ -16,6 +16,7 @@ class AboutMeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('name', TextType::class, ['required' => false])
             ->add('avatar', FileType::class, [
                 'mapped' => false,
                 'required' => false,
@@ -35,6 +36,7 @@ class AboutMeType extends AbstractType
             ->add('myJobText', TextareaType::class, ['required' => false])
             ->add('myNewsTitle', TextType::class, ['required' => false])
             ->add('myNewsText', TextareaType::class, ['required' => false])
+            ->add('copyrightYear', TextType::class, ['required' => false])
         ;
     }
 

@@ -13,14 +13,21 @@
 }
 
 .project-title {
+    display: flex;
     font-family: var(--primary-title);
-    font-weight: 100;
     color: var(--white);
     text-align: center;
 }
 
+.project-title h3 {
+    font-weight: bold;
+}
+
+.project-title p {
+    font-weight: 100;
+}
+
 .project-text {
-    padding: 10px;
     border-radius: 10px;
     background-color: var(--secondary-color);
     font-family: var(--primary-text);
@@ -33,11 +40,18 @@
     justify-content: center;
     align-items: center;
     background-color: var(--white);
-    border-radius: 5px;
+    border-radius: 10px 10px 0 0;
 }
 
 .project-techno img {
     height: 60px;
+    padding: 10px;
+}
+
+.project-paragraph {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 10px;
 }
 
@@ -76,7 +90,18 @@
     }
 
     .project-title {
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 10px;
+    }
+
+    .project-title h3 {
         font-size: 2rem;
+    }
+
+    .project-title p {
+        font-size: 1rem;
+        padding-left: 30px;
     }
 
     .pt-desktop {
@@ -88,15 +113,11 @@
         flex-direction: column;
         width: 90vw;
         margin: 10px auto;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 
     .project-techno img {
         height: 50px;
-    }
-
-    .project-paragraph {
-        padding: 10px 0;
     }
 
     .line {
@@ -140,7 +161,17 @@
     }
 
     .project-title {
-        font-size: 2.5rem;
+        justify-content: center;
+        align-items: baseline;
+    }
+
+    .project-title h3 {
+        font-size: 2.2rem;
+    }
+
+    .project-title p {
+        font-size: 1.5rem;
+        padding-left: 40px;
     }
 
     .pt-mobile {
@@ -149,18 +180,12 @@
 
     .project-text {
         display: grid;
-        grid-template-rows: 1fr 5fr 1fr;
-        font-size: 1.4rem;
+        grid-template-rows: 15% 70% 15%;
+        font-size: 1.2rem;
     }
 
     .project-techno img {
-        height: 70px;
-    }
-
-    .project-paragraph {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        height: 60px;
     }
 
     .line {
@@ -192,7 +217,20 @@
         margin: 20px 40px;
     }
 
-    .project-title {
+    .project-title h3 {
         font-size: 3rem;
+    }
+
+    .project-title p {
+        font-size: 2rem;
+        padding-left: 50px;
+    }
+
+    .project-text {
+        font-size: 1.4rem;
+    }
+
+    .project-techno img {
+        height: 70px;
     }
 }

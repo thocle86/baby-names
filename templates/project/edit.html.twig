@@ -3,19 +3,20 @@
 {% block title %}Modification{% endblock %}
 
 {% block main %}
-    <section class="formAdmin">
+    <main class="formAdmin">
         <h1>
-            Formulaire de modification de la partie<br>
+            Administration des<br>
             <span><i class="fas fa-angle-double-left"></i>
-                Mon portfolio
+            Projets
             <i class="fas fa-angle-double-right"></i></span>
         </h1>
         {{ form_start(form, {'attr' : {'class' : 'formContent'}}) }}
-
-            {{ form_label(form.type) }}
-            {{ form_errors(form.type) }}
-            {{ form_widget(form.type) }}
-            {{ form_help(form.type) }}
+            <div class="project-type">
+                {{ form_label(form.type) }}
+                {{ form_errors(form.type) }}
+                {{ form_widget(form.type, {'attr' : {'class' : 'radio-buttons' }}) }}
+                {{ form_help(form.type) }}
+            </div>
 
             {{ form_label(form.title) }}
             {{ form_errors(form.title) }}
@@ -59,10 +60,15 @@
             {{ form_widget(form.linkInfos) }}
             {{ form_help(form.linkInfos) }}
 
-            <div class="button">
-                <button class="btn-valid">Valider</button>
+            <div class="buttons">
+                <div class="button-left">
+                    <a class="btn-return" href="{{ path('project') }}">Retour<i class="fas fa-door-open"></i></a>
+                </div>
+                <div class="button-right">
+                    <button class="btn-valid">Valider<i class="fas fa-check"></i></button>
+                </div>
             </div>
 
         {{ form_end(form) }}
-    </section>
+    </main>
 {% endblock %}

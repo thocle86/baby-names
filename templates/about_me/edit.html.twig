@@ -3,14 +3,19 @@
 {% block title %}Modification{% endblock %}
 
 {% block main %}
-    <section class="formAdmin">
+    <main class="formAdmin">
         <h1>
-            Formulaire de modification de la partie<br>
+            Administration de la<br>
             <span><i class="fas fa-angle-double-left"></i>
-                A propos de moi
+            Page d'Accueil
             <i class="fas fa-angle-double-right"></i></span>
         </h1>
         {{ form_start(form, {'attr' : {'class' : 'formContent'}}) }}
+
+            {{ form_label(form.name) }}
+            {{ form_errors(form.name) }}
+            {{ form_widget(form.name) }}
+            {{ form_help(form.name) }}
 
             {{ form_label(form.avatar) }}
             {% if errorAddPicture is defined %}
@@ -40,10 +45,20 @@
             {{ form_widget(form.myNewsText) }}
             {{ form_help(form.myNewsText) }}
 
-            <div class="button">
-                <button class="btn-valid">Valider</button>
+            {{ form_label(form.copyrightYear) }}
+            {{ form_errors(form.copyrightYear) }}
+            {{ form_widget(form.copyrightYear) }}
+            {{ form_help(form.copyrightYear) }}
+
+            <div class="buttons">
+                <div class="button-left">
+                    <a class="btn-return" href="{{ path('about_me') }}">Retour<i class="fas fa-door-open"></i></a>
+                </div>
+                <div class="button-right">
+                    <button class="btn-valid">Valider<i class="fas fa-check"></i></button>
+                </div>
             </div>
 
         {{ form_end(form) }}
-    </section>
+    </main>
 {% endblock %}

@@ -93,7 +93,7 @@
             </section>
             <section class="about-me">
                 {% if aboutMe %}
-                    <h1>Thomas CLEMENT</h1>
+                    <h1>{{ aboutMe[0].name }}</h1>
                     <h2 class="sub-title">{{ aboutMe[0].myJobTitle }}</h2>
                     <p class="paragraph">{{ aboutMe[0].myJobText|nl2br }}</p>
                     <h2 class="sub-title">{{ aboutMe[0].myNewsTitle }}</h2>

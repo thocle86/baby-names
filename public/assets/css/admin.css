@@ -1,11 +1,22 @@
 @import 'variable.css';
 
+.container-add li,
+.container-delete-edit li {
+    list-style: none;
+}
+
+.container-add a,
+.container-delete-edit a  {
+    text-decoration: none;
+}
+
 /***TITRE FORMULAIRE___start***/
 .formAdmin h1 {
     padding: 10px;
     font-family: var(--primary-title);
     color: var(--white);
     text-align: center;
+    background-color: var(--secondary-color);
 }
 
 .formAdmin h1 span {
@@ -14,12 +25,46 @@
 }
 /***TITRE FORMULAIRE___end***/
 
-/***SELECT BUTTON___start***/
-.formAdmin select {
+/***RADIO BUTTONS___start***/
+#project_type {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
-/***SELECT BUTTON___end***/
+
+#project_type input[type="radio"] {
+    display: none;
+}
+
+.project-type input[type="radio"] + label {
+    margin: 0 20px;
+    padding: 5px;
+    width: 150px;
+    border-radius: 50px;
+    border: solid 2px var(--primary-color);
+    background-color: var(--white);
+    font-family: var(--primary-text);
+    font-size: 2rem;
+    color: var(--secondary-color);
+    text-align: center;
+    transition: all 0.3s ease-in;
+}
+
+.project-type input[type="radio"]:hover + label {
+    border: solid 2px var(--secondary-color);
+    color: var(--primary-color);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.project-type input[type="radio"]:checked + label {
+    border: solid 2px var(--white);
+    background-color: var(--secondary-color);
+    color: var(--white);
+    font-weight: bold;
+}
+/***RADIO BUTTONS___end***/
 
 /***STRUCTURE___start***/
 .formAdmin .formContent {
@@ -90,20 +135,41 @@
 }
 /***TECHNOS___end***/
 
-/***SEND BUTTON___start***/
-.formAdmin .button {
-    display: flex;
-    margin: 10px;
+/***BUTTONS RETURN & SEND___start***/
+.formAdmin .buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
+.formAdmin .btn-return,
 .formAdmin .btn-valid {
-    width: 200px;
     font-family: var(--primary-title);
-    padding: 10px;
-    border: solid 1px var(--white);
     transition: all 0.3s ease;
     -moz-transition: all 0.3s ease; 
     -webkit-transition: all 0.3s ease;
+}
+
+.formAdmin .button-left {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.formAdmin .btn-return {
+    color: var(--white);
+    text-decoration: none;
+}
+
+.formAdmin .btn-return:hover {
+    text-decoration: underline;
+}
+
+.formAdmin .button-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.formAdmin .btn-valid {
+    border: solid 1px var(--white);
 }
 
 .formAdmin .btn-valid:hover {
@@ -112,10 +178,11 @@
     border: solid 1px var(--white);
 }
 
-.formAdmin .btn-valid i {
+.formAdmin .btn-valid i,
+.formAdmin .btn-return i {
     padding-left: 10px;
 }
-/***SEND BUTTON___end***/
+/***BUTTONS RETURN & SEND___end***/
 
 /***ERROR AND HELP MESSAGES___start***/
 .formAdmin li,
@@ -155,8 +222,14 @@
         margin: 10px;
     }
 
-    .formAdmin .button {
-        justify-content: center;
+    .formAdmin .buttons {
+        padding-top: 30px;
+    }
+
+    .formAdmin .btn-return,
+    .formAdmin .btn-valid {
+        padding: 10px;
+        width: 150px;
     }
 
     .formAdmin li,
@@ -181,9 +254,14 @@
         width: 75%;
     }
 
-    .formAdmin .button {
-        justify-content: flex-end;
-        padding-top: 30px;
+    .formAdmin .buttons {
+        padding-top: 40px;
+    }
+
+    .formAdmin .btn-return,
+    .formAdmin .btn-valid {
+        padding: 10px;
+        width: 150px;
     }
 
     .formAdmin li,
@@ -208,9 +286,14 @@
         width: 50%;
     }
 
-    .formAdmin .button {
-        justify-content: flex-end;
+    .formAdmin .buttons {
         padding-top: 50px;
+    }
+
+    .formAdmin .btn-return,
+    .formAdmin .btn-valid {
+        padding: 10px;
+        width: 200px;
     }
 
     .formAdmin li,

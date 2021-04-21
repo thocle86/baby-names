@@ -20,6 +20,18 @@ class AboutMe
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 255,
+     *      minMessage = "Le nom doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le nom ne peut pas faire plus de {{ limit }} caractères"
+     * )
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="string", length=255)
      * @Assert\Length(
      *      max = 255,
      *      maxMessage = "Le chemin vers le fichier est trop long, il dépasse {{ limit }} caractères"
@@ -75,9 +87,26 @@ class AboutMe
      */
     private $myNewsText;
 
+    /**
+     * @ORM\Column(type="string", length=15)
+     */
+    private $copyrightYear;
+
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
     }
 
     public function getAvatar(): ?string
@@ -136,6 +165,18 @@ class AboutMe
     public function setMyNewsText(string $myNewsText): self
     {
         $this->myNewsText = $myNewsText;
+
+        return $this;
+    }
+
+    public function getCopyrightYear(): ?string
+    {
+        return $this->copyrightYear;
+    }
+
+    public function setCopyrightYear(string $copyrightYear): self
+    {
+        $this->copyrightYear = $copyrightYear;
 
         return $this;
     }
