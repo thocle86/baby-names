@@ -6,8 +6,10 @@
     align-items: center;
     margin: 30px auto 10px;
     background-color: var(--white);
-    border-radius: 10px;
-    border: solid 2px var(--secondary-color);
+    border-radius: 5px;
+    box-shadow: 0px 10px 20px var(--secondary-color);
+    font-family: var(--primary-text);
+    padding: 5px;
 }
 
 .techno {
@@ -16,12 +18,6 @@
     justify-content: center;
     align-items: center;
 }
-/*
-.pf-techno {
-    border-radius: 50%;
-    padding: 20px;
-    background-color: var(--white);
-}*/
 
 @media screen and (max-width: 979px) {
     .list-techno {

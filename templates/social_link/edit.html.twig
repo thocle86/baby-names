@@ -3,9 +3,9 @@
 {% block title %}Modification{% endblock %}
 
 {% block main %}
-    <section class="formAdmin">
+    <main class="formAdmin">
         <h1>
-            Formulaire de modification de la partie<br>
+            Administration des<br>
             <span><i class="fas fa-angle-double-left"></i>
                 Réseaux Sociaux
             <i class="fas fa-angle-double-right"></i></span>
@@ -27,10 +27,15 @@
             {{ form_widget(form.logo) }}
             {{ form_help(form.logo) }}
 
-            <div class="button">
-                <button class="btn-valid">Valider</button>
+            <div class="buttons">
+                <div class="button-left">
+                    <a class="btn-return" href="{{ path('about_me') }}">Retour<i class="fas fa-door-open"></i></a>
+                </div>
+                <div class="button-right">
+                    <button class="btn-valid">Valider<i class="fas fa-check"></i></button>
+                </div>
             </div>
 
         {{ form_end(form) }}
-    </section>
+    </main>
 {% endblock %}

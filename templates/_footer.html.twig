@@ -1,10 +1,13 @@
 <div>
     {% if aboutMe is not empty %}
-        <p>Thomas Clement - {{ aboutMe[0].myJobTitle }} - <i class="far fa-copyright"></i></p>
-    {% else %}
-        <p>Thomas Clement - développeur web - <i class="far fa-copyright"></i></i> 2021</p>
+        <p>
+            {{ aboutMe[0].name }} - {{ aboutMe[0].myJobTitle }} - 
+            <i class="far fa-copyright"></i>  {{ aboutMe[0].copyrightYear }}
+        </p>
     {% endif %}
 </div>
 <div class="footer-legal-notice">
-    <a href="{{ path('legal_notice') }}"><i class="far fa-arrow-alt-circle-right"></i>  Voir les mentions légales</a>
+    <a href="{{ path('legal_notice') }}">
+        <i class="far fa-arrow-alt-circle-right"></i>  Voir les mentions légales
+    </a>
 </div>

@@ -28,7 +28,12 @@
         <section class="content-page content-project">
             {% if projects is not empty %}
                 {% for project in projects %}
-                    <h3 class="project-title">{{ project.title }}</h3>
+                    <div class="project-title">
+                        <h3>
+                            {{ project.title }}
+                        </h3>
+                        <p>[ projet {{ project.type }} ]</p>
+                    </div>
                     <article class="project">
                         <div class="picture-frame pf-project">
                             <img src="/assets/upload/{{ project.photo }}" />

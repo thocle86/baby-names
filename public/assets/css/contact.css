@@ -63,7 +63,7 @@ label {
 /***INPUT-TEXTAREA___end***/
 
 /***SEND BUTTON___start***/
-.button {
+.button-right {
     display: flex;
     margin: 10px 0;
 }
@@ -115,7 +115,7 @@ button i {
         padding: 10px;
     }
 
-    .button {
+    .button-right {
         justify-content: center;
     }
 }
@@ -134,7 +134,7 @@ button i {
         padding: 40px 0 0;
     }
 
-    .button {
+    .button-right {
         justify-content: flex-end;
         padding-top: 20px;
     }
@@ -154,7 +154,7 @@ button i {
         padding: 60px 0 0;
     }
 
-    .button {
+    .button-right {
         justify-content: flex-end;
         padding-top: 25px;
     }
@@ -174,7 +174,7 @@ button i {
         padding: 80px 0 0;
     }
 
-    .button {
+    .button-right {
         justify-content: flex-end;
         padding-top: 30px;
     }
