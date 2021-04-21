@@ -12,7 +12,7 @@
             <h1>A propos de moi</h1>
             <section class="picture-frame pf-about-me pf-mobile">
                 {% if aboutMe %}
-                    <img src="assets/upload/{{ aboutMe[0].avatar }}" />
+                    <img src="/uploads/about-me/{{ aboutMe[0].avatar }}" />
                 {% endif %}
             </section>
         </section>
@@ -47,7 +47,7 @@
             <section class="about-me-desktop">
                 <div class="picture-frame pf-about-me pf-desktop">
                     {% if aboutMe %}
-                        <img src="assets/upload/{{ aboutMe[0].avatar }}" />
+                        <img src="/uploads/about-me/{{ aboutMe[0].avatar }}" />
                     {% endif %}
                 </div>
                 <div class="social-links">
@@ -55,7 +55,7 @@
                         {% for socialLink in socialLinks %}
                             <div>
                                 <a href="{{ socialLink.link }}" target="blank">
-                                    <img src="assets/upload/{{ socialLink.logo }}" />
+                                    <img src="/uploads/social-link/{{ socialLink.logo }}" />
                                 </a>
                                 {% if app.user and is_granted("ROLE_ADMIN") %}
                                     {% if socialLink is not empty %}

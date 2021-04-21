@@ -8,8 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Validator\Constraints\File;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class AboutMeType extends AbstractType
 {
@@ -17,20 +16,10 @@ class AboutMeType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, ['required' => false])
-            ->add('avatar', FileType::class, [
-                'mapped' => false,
+            ->add('avatarFile', VichFileType::class, [
                 'required' => false,
-                'constraints' => [
-                    new File([
-                        'maxSize' => '200k',
-                        'maxSizeMessage' => 'La photo dépasse la limite de 200k !',
-                        'mimeTypes' => [
-                            'image/png',
-                            'image/jpeg',
-                        ],
-                        'mimeTypesMessage' => 'Le format choisi est invalide ! => png ou jpeg uniquement',
-                    ])
-                ],
+                'allow_delete' => true,
+                'download_uri' => true,
             ])
             ->add('myJobTitle', TextType::class, ['required' => false])
             ->add('myJobText', TextareaType::class, ['required' => false])

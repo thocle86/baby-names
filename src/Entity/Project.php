@@ -7,9 +7,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @ORM\Entity(repositoryClass=ProjectRepository::class)
+ * @Vich\Uploadable
  */
 class Project
 {
@@ -35,13 +38,22 @@ class Project
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\Length(
-     *      max = 255,
-     *      maxMessage = "Le chemin vers le fichier est trop long, il dépasse {{ limit }} caractères"
-     * )
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @var string
      */
     private $photo;
+
+    /**
+     * @Vich\UploadableField(mapping="project_file", fileNameProperty="photo")
+     * @var File
+     * @Assert\File(
+     *      maxSize = "300k",
+     *      maxSizeMessage = "Le fichier est trop lourd ({{ size }}{{ suffix }}), {{ limit }}{{ suffix }} maximum",
+     *      mimeTypes = {"image/png", "image/jpg", "image/jpeg", "image/gif"},
+     *      mimeTypesMessage = "Le format {{ type }} n'est pas autorisé, formats autorisés: {{ types }}",
+     * )
+     */
+    private $photoFile;
 
     /**
      * @ORM\Column(type="string", length=1000)
@@ -106,6 +118,12 @@ class Project
      */
     private $technos;
 
+    /**
+     * @ORM\Column(type="datetime")
+     * @var \Datetime
+     */
+    private $updatedAt;
+
     public function __construct()
     {
         $this->technos = new ArrayCollection();
@@ -133,11 +151,24 @@ class Project
         return $this->photo;
     }
 
-    public function setPhoto(string $photo): self
+    public function setPhoto(?string $photo): self
     {
         $this->photo = $photo;
 
         return $this;
+    }
+
+    public function setPhotoFile(File $image = null): void
+    {
+        $this->photoFile = $image;
+        if ($image) {
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getPhotoFile(): ?File
+    {
+        return $this->photoFile;
     }
 
     public function getText(): ?string
@@ -235,6 +266,18 @@ class Project
         if ($this->technos->removeElement($techno)) {
             $techno->removeProject($this);
         }
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

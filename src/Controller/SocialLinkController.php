@@ -10,7 +10,6 @@ use App\Entity\SocialLink;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Form\SocialLinkType;
-use App\Services\FileManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class SocialLinkController extends AbstractController
@@ -21,35 +20,19 @@ class SocialLinkController extends AbstractController
      */
     public function new(
         Request $request,
-        EntityManagerInterface $entityManager,
-        FileManager $fileManager
+        EntityManagerInterface $entityManager
     ): Response {
         $socialLink = new SocialLink();
         $form = $this->createForm(SocialLinkType::class, $socialLink);
         $form->handleRequest($request);
-        $errorAddLogo = '';
         if ($form->isSubmitted() && $form->isValid()) {
-            if (
-                ($form->get('logo')->getData() !== null)
-            ) {
-                $addLogo = $fileManager->saveFile(
-                    'uploadFile',
-                    $form->get('logo')->getData(),
-                    $this->getParameter('upload_directory')
-                );
-                $socialLink->setLogo($addLogo['fileName']);
-
-                $entityManager->persist($socialLink);
-                $entityManager->flush();
-                return $this->redirectToRoute('about_me');
-            } else {
-                $errorAddLogo = '⚠️ ATTENTION: vous devez ajouter une photo pour valider le formulaire';
-            }
+            $entityManager->persist($socialLink);
+            $entityManager->flush();
+            return $this->redirectToRoute('about_me');
         }
         return $this->render('social_link/edit.html.twig', [
             'form' => $form->createView(),
-            'socialLink' => $socialLink,
-            'errorAddLogo' => $errorAddLogo
+            'socialLink' => $socialLink
         ]);
     }
 
@@ -60,25 +43,11 @@ class SocialLinkController extends AbstractController
     public function edit(
         Request $request,
         EntityManagerInterface $entityManager,
-        FileManager $fileManager,
         SocialLink $socialLink
     ): Response {
         $form = $this->createForm(SocialLinkType::class, $socialLink);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $logo = $form->get('logo')->getData();
-            if (
-                $logo !== null &&
-                $socialLink->getLogo() !== null
-            ) {
-                $fileManager->deleteFile($socialLink->getLogo(), $this->getParameter('upload_directory'));
-                $addLogo = $fileManager->saveFile(
-                    'uploadFile',
-                    $logo,
-                    $this->getParameter('upload_directory')
-                );
-                $socialLink->setLogo($addLogo['fileName']);
-            }
             $entityManager->flush();
             return $this->redirectToRoute('about_me');
         }

@@ -1,0 +1,24 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        about-me_file:
+            uri_prefix: '%app.path.about-me_file%'
+            upload_destination: '%kernel.project_dir%/public%app.path.about-me_file%'
+            namer:
+                service: Vich\UploaderBundle\Naming\UniqidNamer
+        project_file:
+            uri_prefix: '%app.path.project_file%'
+            upload_destination: '%kernel.project_dir%/public%app.path.project_file%'
+            namer:
+                service: Vich\UploaderBundle\Naming\UniqidNamer
+        social-link_file:
+            uri_prefix: '%app.path.social-link_file%'
+            upload_destination: '%kernel.project_dir%/public%app.path.social-link_file%'
+            namer:
+                service: Vich\UploaderBundle\Naming\UniqidNamer
+        techno_file:
+            uri_prefix: '%app.path.techno_file%'
+            upload_destination: '%kernel.project_dir%/public%app.path.techno_file%'
+            namer:
+                service: Vich\UploaderBundle\Naming\UniqidNamer

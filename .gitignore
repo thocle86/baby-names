@@ -16,6 +16,6 @@
 ###< symfony/phpunit-bridge ###
 
 ###> assets ###
-/public/assets/upload/
+/public/uploads/
 /public/lib/
 ###< assets ###

@@ -7,9 +7,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @ORM\Entity(repositoryClass=TechnoRepository::class)
+ * @Vich\Uploadable
  */
 class Techno
 {
@@ -33,18 +36,33 @@ class Techno
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\Length(
-     *      max = 255,
-     *      maxMessage = "Le chemin vers le fichier est trop long, il dépasse {{ limit }} caractères"
-     * )
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @var string
      */
     private $logo;
+
+    /**
+     * @Vich\UploadableField(mapping="techno_file", fileNameProperty="logo")
+     * @var File
+     * @Assert\File(
+     *      maxSize = "50k",
+     *      maxSizeMessage = "Le fichier est trop lourd ({{ size }}{{ suffix }}), {{ limit }}{{ suffix }} maximum",
+     *      mimeTypes = {"image/png", "image/jpg", "image/jpeg", "image/gif"},
+     *      mimeTypesMessage = "Le format {{ type }} n'est pas autorisé, formats autorisés: {{ types }}",
+     * )
+     */
+    private $logoFile;
 
     /**
      * @ORM\ManyToMany(targetEntity=Project::class, inversedBy="technos")
      */
     private $project;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @var \Datetime
+     */
+    private $updatedAt;
 
     public function __construct()
     {
@@ -73,11 +91,24 @@ class Techno
         return $this->logo;
     }
 
-    public function setLogo(string $logo): self
+    public function setLogo(?string $logo): self
     {
         $this->logo = $logo;
 
         return $this;
+    }
+
+    public function setLogoFile(File $image = null): void
+    {
+        $this->logoFile = $image;
+        if ($image) {
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getLogoFile(): ?File
+    {
+        return $this->logoFile;
     }
 
     /**
@@ -100,6 +131,18 @@ class Techno
     public function removeProject(Project $project): self
     {
         $this->project->removeElement($project);
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

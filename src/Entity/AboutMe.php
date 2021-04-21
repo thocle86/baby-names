@@ -5,9 +5,12 @@ namespace App\Entity;
 use App\Repository\AboutMeRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @ORM\Entity(repositoryClass=AboutMeRepository::class)
+ * @Vich\Uploadable
  */
 class AboutMe
 {
@@ -31,13 +34,22 @@ class AboutMe
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\Length(
-     *      max = 255,
-     *      maxMessage = "Le chemin vers le fichier est trop long, il dépasse {{ limit }} caractères"
-     * )
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @var string
      */
     private $avatar;
+
+    /**
+     * @Vich\UploadableField(mapping="about-me_file", fileNameProperty="avatar")
+     * @var File
+     * @Assert\File(
+     *      maxSize = "100k",
+     *      maxSizeMessage = "Le fichier est trop lourd ({{ size }}{{ suffix }}), {{ limit }}{{ suffix }} maximum",
+     *      mimeTypes = {"image/png", "image/jpg", "image/jpeg", "image/gif"},
+     *      mimeTypesMessage = "Le format {{ type }} n'est pas autorisé, formats autorisés: {{ types }}",
+     * )
+     */
+    private $avatarFile;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -89,8 +101,21 @@ class AboutMe
 
     /**
      * @ORM\Column(type="string", length=15)
+     * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 15,
+     *      minMessage = "L'année doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "L'année ne peut pas faire plus de {{ limit }} caractères"
+     * )
      */
     private $copyrightYear;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @var \Datetime
+     */
+    private $updatedAt;
 
     public function getId(): ?int
     {
@@ -114,11 +139,24 @@ class AboutMe
         return $this->avatar;
     }
 
-    public function setAvatar(string $avatar): self
+    public function setAvatar(?string $avatar): self
     {
         $this->avatar = $avatar;
 
         return $this;
+    }
+
+    public function setAvatarFile(File $image = null): void
+    {
+        $this->avatarFile = $image;
+        if ($image) {
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getAvatarFile(): ?File
+    {
+        return $this->avatarFile;
     }
 
     public function getMyJobTitle(): ?string
@@ -177,6 +215,18 @@ class AboutMe
     public function setCopyrightYear(string $copyrightYear): self
     {
         $this->copyrightYear = $copyrightYear;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

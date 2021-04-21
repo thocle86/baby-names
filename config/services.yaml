@@ -7,7 +7,10 @@ parameters:
     mailer_from: '%env(resolve:MAILER_FROM_ADDRESS)%'
     # Enfin pour accéder à cette variable depuis un contrôleur :
     # $this->getParameter('mailer_from');
-    upload_directory: '%kernel.project_dir%/public/assets/upload/'
+    app.path.about-me_file: /uploads/about-me
+    app.path.project_file: /uploads/project
+    app.path.social-link_file: /uploads/social-link
+    app.path.techno_file: /uploads/techno
 
 services:
     # default configuration for services in *this* file

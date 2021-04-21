@@ -395,3 +395,24 @@
     color: var(--secondary-color);
 }
 /***BUTTON EXCEPTION___end***/
+
+/***VICH UPLOAD___start***/
+    .vich-file {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .vich-file input {
+        width: 100%;
+        font-family: var(--primary-text);
+        color: var(--white);
+        text-decoration: none;
+    }
+
+    .vich-file div,
+    .vich-file a {
+        display: none;
+    }
+/***VICH UPLOAD___end***/

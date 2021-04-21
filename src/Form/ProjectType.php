@@ -8,12 +8,11 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\Techno;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class ProjectType extends AbstractType
 {
@@ -29,20 +28,10 @@ class ProjectType extends AbstractType
                 'multiple' => false,
             ])
             ->add('title', TextType::class, ['required' => false])
-            ->add('photo', FileType::class, [
-                'mapped' => false,
+            ->add('photoFile', VichFileType::class, [
                 'required' => false,
-                'constraints' => [
-                    new File([
-                        'maxSize' => '300k',
-                        'maxSizeMessage' => 'La photo dépasse la limite de 300k !',
-                        'mimeTypes' => [
-                            'image/png',
-                            'image/jpeg',
-                        ],
-                        'mimeTypesMessage' => 'Le format choisi est invalide ! => png ou jpeg uniquement',
-                    ])
-                ],
+                'allow_delete' => true,
+                'download_uri' => true,
             ])
             ->add('text', TextareaType::class, ['required' => false])
             ->add('linkWeb', UrlType::class, ['required' => false])

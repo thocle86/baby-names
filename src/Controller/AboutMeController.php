@@ -10,7 +10,6 @@ use App\Entity\AboutMe;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Form\AboutMeType;
-use App\Services\FileManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Repository\SocialLinkRepository;
 
@@ -35,35 +34,19 @@ class AboutMeController extends AbstractController
      */
     public function new(
         Request $request,
-        EntityManagerInterface $entityManager,
-        FileManager $fileManager
+        EntityManagerInterface $entityManager
     ): Response {
         $aboutMe = new AboutMe();
         $form = $this->createForm(AboutMeType::class, $aboutMe);
         $form->handleRequest($request);
-        $errorAddAvatar = '';
         if ($form->isSubmitted() && $form->isValid()) {
-            if (
-                ($form->get('avatar')->getData() !== null)
-            ) {
-                $addAvatar = $fileManager->saveFile(
-                    'uploadFile',
-                    $form->get('avatar')->getData(),
-                    $this->getParameter('upload_directory')
-                );
-                $aboutMe->setAvatar($addAvatar['fileName']);
-
-                $entityManager->persist($aboutMe);
-                $entityManager->flush();
-                return $this->redirectToRoute('about_me');
-            } else {
-                $errorAddAvatar = '⚠️ ATTENTION: vous devez ajouter une photo pour valider le formulaire';
-            }
+            $entityManager->persist($aboutMe);
+            $entityManager->flush();
+            return $this->redirectToRoute('about_me');
         }
         return $this->render('about_me/edit.html.twig', [
             'form' => $form->createView(),
-            'aboutMe' => $aboutMe,
-            'errorAddAvatar' => $errorAddAvatar
+            'aboutMe' => $aboutMe
         ]);
     }
 
@@ -74,25 +57,11 @@ class AboutMeController extends AbstractController
     public function edit(
         Request $request,
         EntityManagerInterface $entityManager,
-        FileManager $fileManager,
         AboutMe $aboutMe
     ): Response {
         $form = $this->createForm(AboutMeType::class, $aboutMe);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $avatar = $form->get('avatar')->getData();
-            if (
-                $avatar !== null &&
-                $aboutMe->getAvatar() !== null
-            ) {
-                $fileManager->deleteFile($aboutMe->getAvatar(), $this->getParameter('upload_directory'));
-                $addAvatar = $fileManager->saveFile(
-                    'uploadFile',
-                    $avatar,
-                    $this->getParameter('upload_directory')
-                );
-                $aboutMe->setAvatar($addAvatar['fileName']);
-            }
             $entityManager->flush();
             return $this->redirectToRoute('about_me');
         }
