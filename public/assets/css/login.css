@@ -1,0 +1,67 @@
+@import 'variable.css';
+
+.cont-login {
+    font-family: var(--primary-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cont-login form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--secondary-color);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.cont-login input,
+.cont-login button {
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.cont-login label {
+    color: var(--white);
+    margin-top: 10px;
+}
+
+.cont-login button {
+    background-color: var(--orange);
+    border: solid 2px var(--white);
+    font-weight: bold;
+}
+
+.cont-login input,
+.cont-login label {
+    width: 90%;
+}
+
+@media screen and (max-width: 979px) {
+    .cont-login,
+    .cont-login input,
+    .cont-login button,
+    .cont-login label {
+        font-size: 1rem;
+    }
+    .cont-login form {
+        width: 90%;
+    }
+}
+
+@media screen and (min-width: 980px) {
+    .cont-login,
+    .cont-login input,
+    .cont-login button,
+    .cont-login label {
+        font-size: 1.2rem;
+    }
+    .cont-login form {
+        width: 40%;
+    }
+}

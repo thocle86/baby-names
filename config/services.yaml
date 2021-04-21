@@ -4,6 +4,13 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    mailer_from: '%env(resolve:MAILER_FROM_ADDRESS)%'
+    # Enfin pour accéder à cette variable depuis un contrôleur :
+    # $this->getParameter('mailer_from');
+    app.path.about-me_file: /uploads/about-me
+    app.path.project_file: /uploads/project
+    app.path.social-link_file: /uploads/social-link
+    app.path.techno_file: /uploads/techno
 
 services:
     # default configuration for services in *this* file

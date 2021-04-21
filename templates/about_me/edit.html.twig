@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification{% endblock %}
+
+{% block main %}
+    <main class="formAdmin">
+        <h1>
+            Administration de la<br>
+            <span><i class="fas fa-angle-double-left"></i>
+            Page d'Accueil
+            <i class="fas fa-angle-double-right"></i></span>
+        </h1>
+        {{ form_start(form, {'attr' : {'class' : 'formContent'}}) }}
+
+            {{ form_label(form.name) }}
+            {{ form_errors(form.name) }}
+            {{ form_widget(form.name) }}
+            {{ form_help(form.name) }}
+
+            {{ form_label(form.avatarFile) }}
+            {{ form_errors(form.avatarFile) }}
+            {{ form_widget(form.avatarFile) }}
+            {{ form_help(form.avatarFile) }}
+
+            {{ form_label(form.myJobTitle) }}
+            {{ form_errors(form.myJobTitle) }}
+            {{ form_widget(form.myJobTitle) }}
+            {{ form_help(form.myJobTitle) }}
+
+            {{ form_label(form.myJobText) }}
+            {{ form_errors(form.myJobText) }}
+            {{ form_widget(form.myJobText) }}
+            {{ form_help(form.myJobText) }}
+
+            {{ form_label(form.myNewsTitle) }}
+            {{ form_errors(form.myNewsTitle) }}
+            {{ form_widget(form.myNewsTitle) }}
+            {{ form_help(form.myNewsTitle) }}
+
+            {{ form_label(form.myNewsText) }}
+            {{ form_errors(form.myNewsText) }}
+            {{ form_widget(form.myNewsText) }}
+            {{ form_help(form.myNewsText) }}
+
+            {{ form_label(form.copyrightYear) }}
+            {{ form_errors(form.copyrightYear) }}
+            {{ form_widget(form.copyrightYear) }}
+            {{ form_help(form.copyrightYear) }}
+
+            <div class="buttons">
+                <div class="button-left">
+                    <a class="btn-return" href="{{ path('about_me') }}">Retour<i class="fas fa-door-open"></i></a>
+                </div>
+                <div class="button-right">
+                    <button class="btn-valid">Valider<i class="fas fa-check"></i></button>
+                </div>
+            </div>
+
+        {{ form_end(form) }}
+    </main>
+{% endblock %}

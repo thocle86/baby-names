@@ -1,0 +1,418 @@
+@import 'variable.css';
+
+.container-add li,
+.container-delete-edit li {
+    list-style: none;
+}
+
+.container-add a,
+.container-delete-edit a  {
+    text-decoration: none;
+}
+
+/***TITRE FORMULAIRE___start***/
+.formAdmin h1 {
+    padding: 10px;
+    font-family: var(--primary-title);
+    color: var(--white);
+    text-align: center;
+    background-color: var(--secondary-color);
+}
+
+.formAdmin h1 span {
+    font-size: 120%;
+    color: var(--orange);
+}
+/***TITRE FORMULAIRE___end***/
+
+/***RADIO BUTTONS___start***/
+#project_type {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#project_type input[type="radio"] {
+    display: none;
+}
+
+.project-type input[type="radio"] + label {
+    margin: 0 20px;
+    padding: 5px;
+    width: 150px;
+    border-radius: 50px;
+    border: solid 2px var(--primary-color);
+    background-color: var(--white);
+    font-family: var(--primary-text);
+    font-size: 2rem;
+    color: var(--secondary-color);
+    text-align: center;
+    transition: all 0.3s ease-in;
+}
+
+.project-type input[type="radio"]:hover + label {
+    border: solid 2px var(--secondary-color);
+    color: var(--primary-color);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.project-type input[type="radio"]:checked + label {
+    border: solid 2px var(--white);
+    background-color: var(--secondary-color);
+    color: var(--white);
+    font-weight: bold;
+}
+/***RADIO BUTTONS___end***/
+
+/***STRUCTURE___start***/
+.formAdmin .formContent {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 2vw;
+    background-color: transparent;
+}
+/***STRUCTURE___end***/
+
+/***LABEL___start***/
+.formAdmin label {
+    padding: 10px;
+    font-family: var(--primary-title);
+    font-weight: bold;
+    color: var(--white);
+}
+/***LABEL___end***/
+
+/***INPUT-TEXTAREA___start***/
+.formAdmin input,
+.formAdmin textarea {
+    padding: 10px;
+    background-color: transparent;
+    text-align: center;
+    border: none;
+    transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease; 
+    -webkit-transition: all 0.3s ease;
+    outline: none;
+    font-family: var(--primary-text);
+}
+
+.formAdmin input {
+    border-bottom: solid 1px var(--white);
+}
+
+.formAdmin textarea {
+    resize : none;
+    border: solid 1px var(--white);
+    min-height: 200px;
+}
+
+.formAdmin input:hover,
+.formAdmin textarea:hover {
+    background-color: var(--secondary-color-transparent);
+}
+
+.formAdmin input:focus,
+.formAdmin textarea:focus {
+    background-color: var(--secondary-color);
+    color: var(--white);
+}
+/***INPUT-TEXTAREA___end***/
+
+/***TECHNOS___start***/
+.form-technos-container {
+    margin: 10px 0;
+}
+
+.form-technos-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: solid 1px var(--white);
+}
+/***TECHNOS___end***/
+
+/***BUTTONS RETURN & SEND___start***/
+.formAdmin .buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.formAdmin .btn-return,
+.formAdmin .btn-valid {
+    font-family: var(--primary-title);
+    transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease; 
+    -webkit-transition: all 0.3s ease;
+}
+
+.formAdmin .button-left {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.formAdmin .btn-return {
+    color: var(--white);
+    text-decoration: none;
+}
+
+.formAdmin .btn-return:hover {
+    text-decoration: underline;
+}
+
+.formAdmin .button-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.formAdmin .btn-valid {
+    border: solid 1px var(--white);
+}
+
+.formAdmin .btn-valid:hover {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border: solid 1px var(--white);
+}
+
+.formAdmin .btn-valid i,
+.formAdmin .btn-return i {
+    padding-left: 10px;
+}
+/***BUTTONS RETURN & SEND___end***/
+
+/***ERROR AND HELP MESSAGES___start***/
+.formAdmin li,
+.formAdmin p {
+    padding: 5px 20px;
+    font-family: var(--primary-text);
+    background-color: var(--white);
+    font-style: italic;
+    border-radius: 5px;
+}
+
+/*error message*/
+.formAdmin li {
+    color: red;
+    list-style: none;
+}
+
+/*help message*/
+.formAdmin p {
+    color: blue;
+}
+/***ERROR AND HELP MESSAGES___end***/
+
+@media screen and (max-width: 499px) {
+    .formAdmin h1 {
+        font-size: 1.6rem;
+    }
+
+    .formAdmin .formContent,
+    .formAdmin input,
+    .formAdmin textarea,
+    .formAdmin .btn-valid {
+        font-size: 1.2rem;
+    }
+
+    .formAdmin form {
+        margin: 10px;
+    }
+
+    .formAdmin .buttons {
+        padding-top: 30px;
+    }
+
+    .formAdmin .btn-return,
+    .formAdmin .btn-valid {
+        padding: 10px;
+        width: 150px;
+    }
+
+    .formAdmin li,
+    .formAdmin p {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-width: 979px) {
+    .formAdmin h1 {
+        font-size: 1.8rem;
+    }
+
+    .formAdmin .formContent,
+    .formAdmin input,
+    .formAdmin textarea,
+    .formAdmin .btn-valid {
+        font-size: 1.3rem;
+    }
+
+    .formAdmin .formContent {
+        width: 75%;
+    }
+
+    .formAdmin .buttons {
+        padding-top: 40px;
+    }
+
+    .formAdmin .btn-return,
+    .formAdmin .btn-valid {
+        padding: 10px;
+        width: 150px;
+    }
+
+    .formAdmin li,
+    .formAdmin p {
+        font-size: 1.1rem;
+    }
+}
+
+@media screen and (min-width: 980px) {
+    .formAdmin h1 {
+        font-size: 1.8rem;
+    }
+
+    .formAdmin .formContent,
+    .formAdmin input,
+    .formAdmin textarea,
+    .formAdmin .btn-valid {
+        font-size: 1.4rem;
+    }
+
+    .formAdmin .formContent {
+        width: 50%;
+    }
+
+    .formAdmin .buttons {
+        padding-top: 50px;
+    }
+
+    .formAdmin .btn-return,
+    .formAdmin .btn-valid {
+        padding: 10px;
+        width: 200px;
+    }
+
+    .formAdmin li,
+    .formAdmin p {
+        font-size: 1.2rem;
+    }
+}
+
+/***BUTTON POSITION___start***/
+.cont-add-about-me,
+.cont-del-edit-about-me,
+.cont-add-project {
+    position: fixed;
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.container-delete-edit {
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cont-del-edit-social-links,
+.cont-del-edit-techno {
+    flex-direction: column;
+}
+
+.cont-del-edit-project {
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+}
+/***BUTTON POSITION___end***/
+
+/***BUTTON DESIGN___start***/
+.buttons-admin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 60px;
+    border: solid 2px var(--secondary-color);
+    border-radius: 50%;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.buttons-admin:hover {
+    transform: scale(1.1);
+    border: solid 2px var(--white);
+}
+
+.button-add {
+    background-color: yellow;
+    color: var(--secondary-color);
+}
+.button-delete {
+    background-color: red;
+    color: var(--white);
+}
+
+.button-edit {
+    background-color: blue;
+    color: var(--white);
+}
+/***BUTTON DESIGN___end***/
+
+/***BUTTON EXCEPTION___start***/
+.cont-del-edit-about-me .buttons-admin,
+.cont-add-project .buttons-admin {
+    margin: 10px;
+}
+
+.cont-del-edit-social-links .buttons-admin,
+.cont-del-edit-techno .buttons-admin {
+    height: 40px;
+    width: 40px;
+    font-size: 1rem;
+    margin: 5px;
+}
+
+.cont-del-edit-project .button-edit {
+    margin-right: 20px;
+}
+
+.btn-add-project,
+.btn-add-techno {
+    width: 200px;
+    border-radius: 30px;
+}
+
+.btn-add-techno {
+    background-color: rgb(43, 226, 141);
+    color: var(--secondary-color);
+}
+/***BUTTON EXCEPTION___end***/
+
+/***VICH UPLOAD___start***/
+    .vich-file {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .vich-file input {
+        width: 100%;
+        font-family: var(--primary-text);
+        color: var(--white);
+        text-decoration: none;
+    }
+
+    .vich-file div,
+    .vich-file a {
+        display: none;
+    }
+/***VICH UPLOAD___end***/

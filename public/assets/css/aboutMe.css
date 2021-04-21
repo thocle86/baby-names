@@ -1,0 +1,155 @@
+@import 'variable.css';
+
+.tp-about-me {
+    border-bottom: solid 10px var(--white);
+}
+
+.pf-about-me {
+    border-radius: 50%;
+    background-color: var(--white);
+    border: solid 10px var(--white);
+}
+
+.about-me-desktop {
+    display: flex;
+    flex-direction: column;
+}
+
+.about-me {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.about-me h1 {
+    font-family: var(--primary-title);
+    color: var(--white);
+}
+
+.sub-title {
+    font-weight: 100;
+}
+
+.social-links {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.social-links img {
+    border-radius: 10%;
+    transition: 0.3s;
+}
+
+.social-links img:hover {
+    transform: scale(1.3);
+}
+
+@media screen and (max-width: 979px) {
+    .pf-about-me {
+        top: 10px;
+        height: 250px;
+        width: 250px;
+        margin: 0 auto;
+    }
+
+    .pf-desktop {
+        display: none;
+    }
+
+    .about-me {
+        padding: 10px 20px 50px;
+    }
+
+    .about-me h1 {
+        padding-top: 20px;
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
+    .title-page {
+        height: 200px;
+    }
+
+    .menu-clear {
+        height: 200px;
+    }
+
+    .sub-title {
+        padding-top: 20px;
+    }
+
+    .paragraph {
+        padding-top: 10px;
+    }
+
+    .social-links img {
+        margin-top: 150px;
+        height: 50px;
+    }
+}
+
+@media screen and (min-width: 980px) {
+    .cont-about-me-desktop {
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        padding-top: 10vh;
+    }
+
+    .pf-mobile {
+        display: none;
+    }
+
+    .about-me {
+        padding-right: 20px;
+    }
+
+    .about-me h1 {
+        padding: 20px 0;
+        font-size: 3.5rem;
+        font-weight: bold;
+    }
+
+    .sub-title {
+        padding: 20px 0 10px;
+    }
+
+    .paragraph {
+        padding: 10px 0 20px;
+    }
+
+    .social-links {
+        margin-top: 50px;
+    }
+
+    .social-links img {
+        height: 50px;
+    }
+}
+
+@media screen and (min-width: 980px) and (max-width: 1299px) {
+    .cont-about-me-desktop {
+        grid-template-columns: 40% 60%;
+        padding-top: 50px;
+    }
+
+    .pf-about-me {
+        height: 350px;
+        width: 350px;
+        margin: 20px;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    .cont-about-me-desktop {
+        grid-template-columns: 35% 65%;
+    }
+
+    .pf-about-me {
+        height: 400px;
+        width: 400px;
+        margin: 20px;
+    }
+}

@@ -1,0 +1,236 @@
+@import 'variable.css';
+
+.pf-project {
+    border-radius: 10px;
+}
+
+.pf-project img {
+    border-radius: 10px;
+}
+
+.line {
+    background-color: var(--secondary-color);
+}
+
+.project-title {
+    display: flex;
+    font-family: var(--primary-title);
+    color: var(--white);
+    text-align: center;
+}
+
+.project-title h3 {
+    font-weight: bold;
+}
+
+.project-title p {
+    font-weight: 100;
+}
+
+.project-text {
+    border-radius: 10px;
+    background-color: var(--secondary-color);
+    font-family: var(--primary-text);
+    color: var(--white);
+    text-align: center;
+}
+
+.project-techno {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white);
+    border-radius: 10px 10px 0 0;
+}
+
+.project-techno img {
+    height: 60px;
+    padding: 10px;
+}
+
+.project-paragraph {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.project-links {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.project-links a {
+    color: var(--primary-color);
+}
+
+.work-in-progress {
+    padding: 30px 10px;
+    font-family: var(--primary-title);
+    font-weight: 100;
+    letter-spacing: 0.5rem;
+    color: var(--white);
+    text-align: center;
+}
+
+@media screen and (max-width: 979px) {
+    .project {
+        margin: 20px auto;
+    }
+
+    .pf-project {
+        height: 50vw;
+        width: 90vw;
+        margin: 0 auto;
+    }
+
+    .pf-project img {
+        width: 100%;
+    }
+
+    .project-title {
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 10px;
+    }
+
+    .project-title h3 {
+        font-size: 2rem;
+    }
+
+    .project-title p {
+        font-size: 1rem;
+        padding-left: 30px;
+    }
+
+    .pt-desktop {
+        display: none;
+    }
+
+    .project-text {
+        display: flex;
+        flex-direction: column;
+        width: 90vw;
+        margin: 10px auto;
+        font-size: 1.1rem;
+    }
+
+    .project-techno img {
+        height: 50px;
+    }
+
+    .line {
+        height: 8px;
+        width: 30vw;
+        margin: 10px auto;
+    }
+
+    .project-links a {
+        font-size: 2.2rem;
+    }
+
+    .work-in-progress {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (min-width: 980px) {
+    .content-project > :nth-child(1) {
+        padding-top: 100px;
+    }
+
+    .cont-project .sub-title {
+        padding: 50px 10px 20px;
+    }
+    
+    .project {
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+        margin: 20px 40px;
+    }
+
+    .pf-project {
+        height: 60vh;
+        margin-right: 20px;
+    }
+
+    .pf-project img {
+        height: 100%;
+        border-radius: 10px;
+    }
+
+    .project-title {
+        justify-content: center;
+        align-items: baseline;
+    }
+
+    .project-title h3 {
+        font-size: 2.2rem;
+    }
+
+    .project-title p {
+        font-size: 1.5rem;
+        padding-left: 40px;
+    }
+
+    .pt-mobile {
+        display: none;
+    }
+
+    .project-text {
+        display: grid;
+        grid-template-rows: 15% 70% 15%;
+        font-size: 1.2rem;
+    }
+
+    .project-techno img {
+        height: 60px;
+    }
+
+    .line {
+        height: 12px;
+        width: 20vw;
+        margin: 80px auto;
+    }
+
+    .project-links a {
+        font-size: 2.5rem;
+        transition: all 0.3s;
+    }
+
+    .project-links a:hover {
+        transform: scale(1.5);
+        color: var(--white);
+    }
+
+    .work-in-progress {
+        font-size: 3rem;
+        padding-bottom: 100px;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    .project {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        margin: 20px 40px;
+    }
+
+    .project-title h3 {
+        font-size: 3rem;
+    }
+
+    .project-title p {
+        font-size: 2rem;
+        padding-left: 50px;
+    }
+
+    .project-text {
+        font-size: 1.4rem;
+    }
+
+    .project-techno img {
+        height: 70px;
+    }
+}

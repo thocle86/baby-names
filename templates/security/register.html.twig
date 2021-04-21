@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/login.css" />
+{% endblock %}
+
+{% block title %}S'inscrire{% endblock %}
+
+{% block main %}
+    <main class="container cont-login">
+        {% for flashError in app.flashes('verify_email_error') %}
+            <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+        {% endfor %}
+        <section class="title-page tp-login">
+            <h1>S'inscrire</h1>
+        </section>
+
+        {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.email) }}
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Password'
+            }) }}
+            {{ form_row(registrationForm.agreeTerms) }}
+
+            <button type="submit" class="">Valider</button>
+        {{ form_end(registrationForm) }}
+    </main>
+{% endblock %}

@@ -1,0 +1,271 @@
+@import 'variable.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    background-color: var(--primary-color);
+    min-height: 100%;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 10vh;
+    padding: 10px;
+    background-color: var(--secondary-color);
+    font-family: var(--primary-text);
+    color: var(--white);
+    text-align: center;
+}
+
+footer div {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-legal-notice a,
+.footer-legal-notice a:visited {
+    text-decoration: none;
+    color: var(--white);
+    transition: all 0.3s ease-in;
+}
+
+.footer-legal-notice a:hover {
+    text-decoration: underline;
+    transform: scale(1.1);
+}
+
+.title-page {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: var(--secondary-color);
+    font-family: var(--primary-title);
+    color: var(--primary-color);
+}
+
+.sub-title {
+    font-family: var(--primary-title);
+    color: var(--white);
+    text-align: center;
+}
+
+.paragraph {
+    font-family: var(--primary-text);
+    color: var(--white);
+    text-align: center;
+}
+
+.picture-frame {
+    position: relative;
+    overflow: hidden;
+    /*height: local;*/
+    /*width: local;*/
+}
+
+.picture-frame img {
+    height: 100%;
+    position: relative;
+    transform: translateY(-50%);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@media screen and (max-width: 979px) {
+    main {
+        min-height: 80vh;
+    }
+
+    footer {
+        flex-direction: column;
+        font-size: 1.1rem;
+    }
+
+    .title-page {
+        padding: 20px;
+        height: 90px;/*géré localement pour AboutMe*/
+        font-size: 1.5rem;
+    }
+
+    .title-page h1 {
+        padding-right: 60px;
+    }
+
+    .sub-title {
+        font-size: 2.2rem;
+        padding: 10px;
+    }
+
+    .paragraph {
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (min-width: 980px) {
+    main {
+        min-height: 84vh;
+    }
+
+    footer {
+        flex-direction: row;
+        font-size: 1.3rem;
+    }
+
+    .title-page {
+        display: none;
+    }
+
+    .sub-title {
+        font-size: 3rem;
+    }
+
+    .paragraph {
+        font-size: 1.8rem;
+    }
+}
+
+.logout {
+    z-index: 200;
+    position: fixed;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--orange);
+    color: var(--secondary-color);
+    border-radius: 50%;
+    border: solid 2px var(--secondary-color);
+    transition: all 0.3s ease;
+}
+
+.logout:hover {
+    transform: scale(1.1);
+    background-color: var(--secondary-color);
+    border: solid 2px var(--orange);
+    color: var(--orange);
+}
+
+.logout i {
+    padding: 0;
+}
+
+@media screen and (max-width: 979px) {
+    .logout {
+        top: 90px;
+        width: 65px;
+        height: 65px;
+        font-size: 1.7rem;
+    }
+}
+
+@media screen and (min-width: 980px) {
+    .logout {
+        top: 60px;
+        width: 80px;
+        height: 80px;
+        font-size: 2.2rem;
+    }
+}
+
+/***LEGAL-NOTICE___start***/
+.cont-legal-notice {
+    background-color: var(--white);
+    font-family: var(--primary-text);
+}
+
+.ln-content {
+    line-height: 140%;
+    text-align: justify;
+}
+.ln-content h1 {
+    font-family: var(--primary-title);
+    font-size: 3rem;
+    text-align: center;
+    padding: 30px;
+}
+
+.ln-content h3 {
+    padding-bottom: 10px;
+}
+
+.ln-content strong {
+    color: var(--primary-color);
+}
+
+@media screen and (max-width: 979px) {
+    .ln-content {
+        padding: 20px;
+        font-size: 1.1rem;
+    }
+
+    .ln-content h1 {
+        display: none;
+    }
+
+    .ln-content div {
+        padding: 10px 0;
+    }
+
+    .ln-content p,
+    .ln-content ul,
+    .ln-content li {
+        padding: 5px;
+    }
+
+    .ln-content ul {
+        padding-left: 30px;
+    }
+}
+
+@media screen and (min-width: 980px) and (max-width: 1299px) {
+    .ln-content {
+        padding: 30px 100px;
+        font-size: 1.3rem;
+    }
+
+    .ln-content div {
+        padding: 20px 0;
+    }
+
+    .ln-content p,
+    .ln-content ul,
+    .ln-content li {
+        padding: 10px;
+    }
+
+    .ln-content ul {
+        padding-left: 100px;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    .ln-content {
+        padding: 30px 300px;
+        font-size: 1.5rem;
+    }
+
+    .ln-content div {
+        padding: 30px 0;
+    }
+
+    .ln-content p,
+    .ln-content ul,
+    .ln-content li {
+        padding: 10px;
+    }
+
+    .ln-content ul {
+        padding-left: 150px;
+    }
+}
+/***LEGAL-NOTICE___end***/

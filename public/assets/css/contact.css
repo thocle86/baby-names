@@ -1,0 +1,222 @@
+@import 'variable.css';
+
+/***STRUCTURE___start***/
+.contactForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+}
+/***STRUCTURE___end***/
+
+/***LABEL___start***/
+label {
+    padding: 10px;
+    font-family: var(--primary-title);
+    font-weight: bold;
+    color: var(--white);
+}
+
+.message label {
+    text-align: center;
+}
+/***LABEL___end***/
+
+/***INPUT-TEXTAREA___start***/
+.infos input,
+.message textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: transparent;
+    text-align: center;
+    border: none;
+    transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease; 
+    -webkit-transition: all 0.3s ease;
+    outline: none;
+    font-family: var(--primary-text);
+}
+
+.infos input {
+    border-bottom: solid 1px var(--white);
+}
+
+.message textarea {
+    resize : none;
+    height: 200px;
+    border: solid 1px var(--white);
+}
+
+.infos input:hover,
+.message textarea:hover {
+    background-color: var(--secondary-color-transparent);
+}
+
+.infos input:focus,
+.message textarea:focus {
+    background-color: var(--secondary-color);
+    color: var(--white);
+}
+/***INPUT-TEXTAREA___end***/
+
+/***SEND BUTTON___start***/
+.button-right {
+    display: flex;
+    margin: 10px 0;
+}
+
+button {
+    width: 200px;
+    font-family: var(--primary-title);
+    padding: 10px;
+    border: solid 1px var(--white);
+    transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease; 
+    -webkit-transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border: solid 1px var(--white);
+}
+
+button i {
+    padding-left: 10px;
+}
+/***SEND BUTTON___end***/
+
+.infos {
+    display: flex;
+    flex-direction: column;
+}
+
+.infos label {
+    text-align: left;
+    padding-bottom: 0;
+}
+
+.infos input {
+    margin-top: 0;
+}
+
+@media screen and (max-width: 499px) {
+    form,
+    .infos input,
+    .message textarea,
+    button {
+        font-size: 1.2rem;
+    }
+
+    form {
+        padding: 10px;
+    }
+
+    .button-right {
+        justify-content: center;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-width: 979px) {
+    form,
+    .infos input,
+    .message textarea,
+    button {
+        font-size: 1.3rem;
+    }
+
+    form {
+        width: 80%;
+        margin: 0 auto;
+        padding: 40px 0 0;
+    }
+
+    .button-right {
+        justify-content: flex-end;
+        padding-top: 20px;
+    }
+}
+
+@media screen and (min-width: 980px) and (max-width: 1299px) {
+    form,
+    .infos input,
+    .message textarea,
+    button {
+        font-size: 1.4rem;
+    }
+
+    form {
+        width: 60%;
+        margin: 0 auto;
+        padding: 60px 0 0;
+    }
+
+    .button-right {
+        justify-content: flex-end;
+        padding-top: 25px;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    form,
+    .infos input,
+    .message textarea,
+    button {
+        font-size: 1.5rem;
+    }
+
+    form {
+        width: 40%;
+        margin: 0 auto;
+        padding: 80px 0 0;
+    }
+
+    .button-right {
+        justify-content: flex-end;
+        padding-top: 30px;
+    }
+}
+
+.contactForm li,
+.contactForm p {
+    padding: 5px 20px;
+    font-family: var(--primary-text);
+    background-color: var(--white);
+    font-style: italic;
+    border-radius: 5px;
+}
+
+/*error message*/
+.contactForm li {
+    color: red;
+    list-style: none;
+}
+
+/*help message*/
+.contactForm p {
+    color: blue;
+}
+
+.send-message {
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    padding: 10px;
+    font-family: var(--primary-text);
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.send-success {
+    background-color: rgb(165, 250, 165);
+    color: green;
+}
+
+.send-warning {
+    background-color: rgb(250, 200, 200);
+    color: red;
+}
