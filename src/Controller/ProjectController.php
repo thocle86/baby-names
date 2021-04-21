@@ -10,7 +10,6 @@ use App\Entity\Project;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Form\ProjectType;
-use App\Services\FileManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class ProjectController extends AbstractController
@@ -33,35 +32,19 @@ class ProjectController extends AbstractController
      */
     public function newProject(
         Request $request,
-        EntityManagerInterface $entityManager,
-        FileManager $fileManager
+        EntityManagerInterface $entityManager
     ): Response {
         $project = new Project();
         $form = $this->createForm(ProjectType::class, $project);
         $form->handleRequest($request);
-        $errorAddPhoto = '';
         if ($form->isSubmitted() && $form->isValid()) {
-            if (
-                ($form->get('photo')->getData() !== null)
-            ) {
-                $addPhoto = $fileManager->saveFile(
-                    'uploadFile',
-                    $form->get('photo')->getData(),
-                    $this->getParameter('upload_directory')
-                );
-                $project->setPhoto($addPhoto['fileName']);
-
-                $entityManager->persist($project);
-                $entityManager->flush();
-                return $this->redirectToRoute('project');
-            } else {
-                $errorAddPhoto = '⚠️ ATTENTION: vous devez ajouter une photo pour valider le formulaire';
-            }
+            $entityManager->persist($project);
+            $entityManager->flush();
+            return $this->redirectToRoute('project');
         }
         return $this->render('project/edit.html.twig', [
             'form' => $form->createView(),
-            'project' => $project,
-            'errorAddPhoto' => $errorAddPhoto
+            'project' => $project
         ]);
     }
 
@@ -72,25 +55,11 @@ class ProjectController extends AbstractController
     public function editProject(
         Request $request,
         EntityManagerInterface $entityManager,
-        FileManager $fileManager,
         Project $project
     ): Response {
         $form = $this->createForm(ProjectType::class, $project);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $photo = $form->get('photo')->getData();
-            if (
-                $photo !== null &&
-                $project->getPhoto() !== null
-            ) {
-                $fileManager->deleteFile($project->getPhoto(), $this->getParameter('upload_directory'));
-                $addPhoto = $fileManager->saveFile(
-                    'uploadFile',
-                    $photo,
-                    $this->getParameter('upload_directory')
-                );
-                $project->setPhoto($addPhoto['fileName']);
-            }
             $entityManager->flush();
             return $this->redirectToRoute('project');
         }

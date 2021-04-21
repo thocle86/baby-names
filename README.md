@@ -2,13 +2,8 @@
 
 ## Purpose
 
-This is my portfolio, it presents:
-
-- my skills;
-- my projects;
-- my developments;
-- my CV;
-- my social networks
+This is my portfolio, it presents my personal and professional projects.  
+There is also a part briefly introducing me as well as a contact form.
 
 
 ## Requirements

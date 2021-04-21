@@ -7,8 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Validator\Constraints\File;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class SocialLinkType extends AbstractType
 {
@@ -17,20 +16,10 @@ class SocialLinkType extends AbstractType
         $builder
             ->add('name', TextType::class, ['required' => false])
             ->add('link', TextType::class, ['required' => false])
-            ->add('logo', FileType::class, [
-                'mapped' => false,
+            ->add('logoFile', VichFileType::class, [
                 'required' => false,
-                'constraints' => [
-                    new File([
-                        'maxSize' => '50k',
-                        'maxSizeMessage' => 'La photo dépasse la limite de 50k !',
-                        'mimeTypes' => [
-                            'image/png',
-                            'image/jpeg',
-                        ],
-                        'mimeTypesMessage' => 'Le format choisi est invalide ! => png ou jpeg uniquement',
-                    ])
-                ],
+                'allow_delete' => true,
+                'download_uri' => true,
             ])
         ;
     }

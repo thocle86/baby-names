@@ -19,7 +19,7 @@
                 {% for techno in technos %}
                     <div class="techno">
                         <div class="picture-frame pf-techno">
-                            <img src="/assets/upload/{{ techno.logo }}" />
+                            <img src="/uploads/techno/{{ techno.logo }}" />
                         </div>
                         {% if techno is not empty %}
                             <div class="container-delete-edit cont-del-edit-techno">
@@ -50,10 +50,10 @@
             {{ form_widget(form.name) }}
             {{ form_help(form.name) }}
 
-            {{ form_label(form.logo) }}
-            {{ form_errors(form.logo) }}
-            {{ form_widget(form.logo) }}
-            {{ form_help(form.logo) }}
+            {{ form_label(form.logoFile) }}
+            {{ form_errors(form.logoFile) }}
+            {{ form_widget(form.logoFile) }}
+            {{ form_help(form.logoFile) }}
 
             <div class="buttons">
                 <div class="button-left">
