@@ -91,7 +91,7 @@ footer div {
     }
 
     .title-page {
-        padding: 25px 15px 0;
+        padding: 20px 15px 0;
         height: 90px;/*géré localement pour AboutMe*/
         font-size: 1.2rem;
     }
@@ -107,6 +107,10 @@ footer div {
 
     .paragraph {
         font-size: 1.2rem;
+    }
+
+    .is-not-mobile {
+        display: none;
     }
 }
 
@@ -130,6 +134,10 @@ footer div {
 
     .paragraph {
         font-size: 1.8rem;
+    }
+
+    .is-not-desktop {
+        display: none;
     }
 }
 
