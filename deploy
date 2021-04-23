@@ -1,2 +1,2 @@
 #!/bin/sh
-rsync -av ./ xy15b_portfolio@thomas-clement.com:~/portfolio --include=public --include=public/.htaccess --include=public/lib --include=public/uploads --include=vendor --exclude-from=.gitignore --exclude=".*"
+rsync -av ./ xy15b_k5479kvhf78kmq7d@thomas-clement.com:~/sites/thomas-clement.com/ --include=public --include=public/.htaccess --include=public/lib --include=public/uploads --include=vendor --exclude-from=.gitignore --exclude=".*"
