@@ -9,12 +9,7 @@
     --orange: #F5B041;
     --primary-title: 'Baumans', sans-serif;
     --primary-text: 'TextMeOne', sans-serif;
-    --secondary-title: 'GhoustOutline', sans-serif;
-}
-
-@font-face {
-    font-family: 'SquadaOne';
-    src: url('../fonts/SquadaOne-Regular.ttf');
+    --secondary-title: 'AllertaStencil', sans-serif;
 }
 
 @font-face {
@@ -30,9 +25,4 @@
 @font-face {
     font-family: 'AllertaStencil';
     src: url('../fonts/AllertaStencil-Regular.ttf');
-}
-
-@font-face {
-    font-family: 'GhoustOutline';
-    src: url('../fonts/Ghoust-Outline.otf');
 }
