@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\Techno;
 use Vich\UploaderBundle\Form\Type\VichFileType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 class ProjectType extends AbstractType
 {
@@ -45,6 +46,7 @@ class ProjectType extends AbstractType
                 'expanded' => true,
                 'by_reference' => false,
             ])
+            ->add('position', NumberType::class, ['required' => false])
         ;
     }
 

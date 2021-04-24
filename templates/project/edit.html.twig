@@ -60,6 +60,11 @@
             {{ form_widget(form.linkInfos) }}
             {{ form_help(form.linkInfos) }}
 
+            {{ form_label(form.position) }}
+            {{ form_errors(form.position) }}
+            {{ form_widget(form.position) }}
+            {{ form_help(form.position) }}
+
             <div class="buttons">
                 <div class="button-left">
                     <a class="btn-return" href="{{ path('project') }}">Retour<i class="fas fa-door-open"></i></a>
