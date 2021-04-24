@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Form\AboutMeType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Repository\SocialLinkRepository;
+use App\Repository\TextHomeRepository;
 
 class AboutMeController extends AbstractController
 {
@@ -20,11 +21,16 @@ class AboutMeController extends AbstractController
      */
     public function index(
         AboutMeRepository $abouMeRepository,
-        SocialLinkRepository $socialLinkRepository
+        SocialLinkRepository $socialLinkRepository,
+        TextHomeRepository $textHomeRepository
     ): Response {
         return $this->render('about_me/index.html.twig', [
             'aboutMe' => $abouMeRepository->findAll(),
-            'socialLinks' => $socialLinkRepository->findAll()
+            'socialLinks' => $socialLinkRepository->findAll(),
+            'textHomes' => $textHomeRepository->findBy(
+                [],
+                ['position' => 'ASC'],
+                )
         ]);
     }
 

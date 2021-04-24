@@ -12,25 +12,20 @@
         </h1>
         {{ form_start(form, {'attr' : {'class' : 'formContent'}}) }}
 
-            {{ form_label(form.name) }}
-            {{ form_errors(form.name) }}
-            {{ form_widget(form.name) }}
-            {{ form_help(form.name) }}
+            {{ form_label(form.title) }}
+            {{ form_errors(form.title) }}
+            {{ form_widget(form.title) }}
+            {{ form_help(form.title) }}
 
-            {{ form_label(form.avatarFile) }}
-            {{ form_errors(form.avatarFile) }}
-            {{ form_widget(form.avatarFile) }}
-            {{ form_help(form.avatarFile) }}
+            {{ form_label(form.text) }}
+            {{ form_errors(form.text) }}
+            {{ form_widget(form.text) }}
+            {{ form_help(form.text) }}
 
-            {{ form_label(form.myJob) }}
-            {{ form_errors(form.myJob) }}
-            {{ form_widget(form.myJob) }}
-            {{ form_help(form.myJob) }}
-
-            {{ form_label(form.copyrightYear) }}
-            {{ form_errors(form.copyrightYear) }}
-            {{ form_widget(form.copyrightYear) }}
-            {{ form_help(form.copyrightYear) }}
+            {{ form_label(form.position) }}
+            {{ form_errors(form.position) }}
+            {{ form_widget(form.position) }}
+            {{ form_help(form.position) }}
 
             <div class="buttons">
                 <div class="button-left">

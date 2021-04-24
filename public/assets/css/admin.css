@@ -305,6 +305,12 @@
 /***BUTTON POSITION___start***/
 .cont-add-about-me,
 .cont-del-edit-about-me,
+.cont-add-text-home {
+    position: fixed;
+    z-index: 50;
+    top: 100px;
+}
+
 .cont-add-project {
     position: fixed;
     z-index: 50;
@@ -326,11 +332,13 @@
     flex-direction: column;
 }
 
+.cont-del-edit-text-home,
 .cont-del-edit-project {
     position: absolute;
     justify-content: center;
     align-items: center;
 }
+
 /***BUTTON POSITION___end***/
 
 /***BUTTON DESIGN___start***/
@@ -380,6 +388,7 @@
     margin: 5px;
 }
 
+.cont-del-edit-text-home .button-edit,
 .cont-del-edit-project .button-edit {
     margin-right: 20px;
 }

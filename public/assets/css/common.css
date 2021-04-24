@@ -17,8 +17,7 @@ footer {
     justify-content: center;
     align-items: center;
     width: 100%;
-    min-height: 10vh;
-    padding: 10px;
+    min-height: 6vh;
     background-color: var(--secondary-color);
     font-family: var(--primary-text);
     color: var(--white);
@@ -62,7 +61,7 @@ footer div {
 .paragraph {
     font-family: var(--primary-text);
     color: var(--white);
-    text-align: center;
+    text-align: justify;
 }
 
 .picture-frame {
@@ -91,7 +90,7 @@ footer div {
     }
 
     .title-page {
-        padding: 25px 15px 0;
+        padding: 20px 15px 0;
         height: 90px;/*géré localement pour AboutMe*/
         font-size: 1.2rem;
     }
@@ -101,18 +100,21 @@ footer div {
     }
 
     .sub-title {
-        font-size: 2.2rem;
-        padding: 10px;
+        font-size: 2rem;
     }
 
     .paragraph {
         font-size: 1.2rem;
     }
+
+    .is-not-mobile {
+        display: none;
+    }
 }
 
 @media screen and (min-width: 980px) {
     main {
-        min-height: 84vh;
+        min-height: 88vh;
     }
 
     footer {
@@ -125,11 +127,15 @@ footer div {
     }
 
     .sub-title {
-        font-size: 3rem;
+        font-size: 2.5rem;
     }
 
     .paragraph {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
+    }
+
+    .is-not-desktop {
+        display: none;
     }
 }
 

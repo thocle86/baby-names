@@ -1,8 +1,8 @@
 <div>
     {% if aboutMe is not empty %}
-        <p>
-            {{ aboutMe[0].name }} - {{ aboutMe[0].myJobTitle }} - 
-            <i class="far fa-copyright"></i>  {{ aboutMe[0].copyrightYear }}
+        <p> 
+            <i class="far fa-copyright"></i>  {{ aboutMe[0].copyrightYear }} - 
+            {{ aboutMe[0].name }} - {{ aboutMe[0].myJob }}
         </p>
     {% endif %}
 </div>

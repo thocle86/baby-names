@@ -22,11 +22,13 @@ class Project
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @var integer
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @var string
      * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
      * @Assert\Length(
      *      min = 2,
@@ -57,6 +59,7 @@ class Project
 
     /**
      * @ORM\Column(type="string", length=1000)
+     * @var string
      * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
      * @Assert\Length(
      *      min = 2,
@@ -69,6 +72,7 @@ class Project
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @var string
      * @Assert\Length(
      *      max = 255,
      *      maxMessage = "Le lien est trop long, il dépasse {{ limit }} caractères"
@@ -78,6 +82,7 @@ class Project
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @var string
      * @Assert\Length(
      *      max = 255,
      *      maxMessage = "Le lien est trop long, il dépasse {{ limit }} caractères"
@@ -87,6 +92,7 @@ class Project
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @var string
      * @Assert\Length(
      *      max = 255,
      *      maxMessage = "Le lien est trop long, il dépasse {{ limit }} caractères"
@@ -96,16 +102,17 @@ class Project
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @var string
      * @Assert\Length(
      *      max = 255,
      *      maxMessage = "Le lien est trop long, il dépasse {{ limit }} caractères"
      * )
-     * 
      */
     private $linkInfos;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @var string
      * @Assert\Choice(
      *      choices=Project::TYPES,
      *      message = "Type invalide"
@@ -123,6 +130,13 @@ class Project
      * @var \Datetime
      */
     private $updatedAt;
+
+    /**
+     * @ORM\Column(type="integer")
+     * @var integer
+     * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
+     */
+    private $position;
 
     public function __construct()
     {
@@ -278,6 +292,18 @@ class Project
     public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+
+    public function setPosition(int $position): self
+    {
+        $this->position = $position;
 
         return $this;
     }
