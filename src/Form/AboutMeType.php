@@ -21,10 +21,7 @@ class AboutMeType extends AbstractType
                 'allow_delete' => true,
                 'download_uri' => true,
             ])
-            ->add('myJobTitle', TextType::class, ['required' => false])
-            ->add('myJobText', TextareaType::class, ['required' => false])
-            ->add('myNewsTitle', TextType::class, ['required' => false])
-            ->add('myNewsText', TextareaType::class, ['required' => false])
+            ->add('myJob', TextType::class, ['required' => false])
             ->add('copyrightYear', TextType::class, ['required' => false])
         ;
     }

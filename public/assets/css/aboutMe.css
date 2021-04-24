@@ -38,6 +38,10 @@
     transform: scale(1.2);
 }
 
+.about-me-articles article {
+    width: 100%;
+}
+
 @media screen and (max-width: 979px) {
     .home-page {
         display: flex;
@@ -60,18 +64,18 @@
     }
 
     .about-me-name {
-        padding: 10px;
+        margin-top: 100px;
+        padding: 0 10px 5px;
         font-size: 2.3rem;
     }
 
     .about-me-job {
-        padding: 10px;
+        padding: 5px 10px 10px;
         font-size: 1.8rem;
     }
 
     .social-links {
         justify-content: space-around;
-        margin-top: 130px;
     }
 
     .social-links img {
@@ -98,6 +102,9 @@
         justify-content: center;
         align-items: center;
         height: 84vh;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 20px;
     }
 
     .about-me-name {
@@ -119,15 +126,16 @@
     }
 
     .social-links img {
-        margin: 20px;
+        margin: 0 20px;
         height: 50px;
     }
 
     .about-me-articles {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 20px 100px 20px 50px; 
+        padding: 20px 100px 20px 50px;
     }
 
     .sub-title {
