@@ -21,11 +21,40 @@
         </section>
 
         <aside>
+            <!--ADMIN BUTTONS FOR ADD - EDIT - DELETE___start-->
+            {% if app.user and is_granted("ROLE_ADMIN") %}
+                {% if aboutMe is empty %}
+                    <div class="container-add cont-add-about-me">
+                        <a href="{{ path('about_me_new') }}">
+                            <button type="submit" class="buttons-admin button-add">
+                                <i class="fas fa-plus"></i>
+                            </button>  
+                        </a>
+                    </div>
+                {% endif %}
+                {% if aboutMe is not empty %}
+                    <div class="container-delete-edit cont-del-edit-about-me">
+                        <a href="{{ path('about_me_edit', {'id': aboutMe[0].id }) }}">
+                            <button type="submit" class="buttons-admin button-edit">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                        </a>
+                        <form method="post" action="{{ path('about_me_delete', {'id' : aboutMe[0].id}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir supprimer le contenu?');">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ aboutMe[0].id) }}">
+                            <button type="submit" class="buttons-admin button-delete">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </form>
+                    </div>
+                {% endif %}
+            {% endif %}
+            <!--ADMIN BUTTONS FOR ADD - EDIT - DELETE___end-->
             <!--NAME & JOB DESKTOP___start-->
             <div class="is-not-mobile">
                 {% if aboutMe %}
                     <h1 class="about-me-name">{{ aboutMe[0].name }}</h1>
-                    <h2 class="about-me-job">{{ aboutMe[0].myJobTitle }}</h2>
+                    <h2 class="about-me-job">{{ aboutMe[0].myJob }}</h2>
                 {% endif %}
             </div>
             <!--NAME & JOB DESKTOP___end-->
@@ -36,6 +65,14 @@
                 {% endif %}
             </div>
             <!--AVATAR DESKTOP___end-->
+            <!--NAME & JOB MOBILE___start-->
+            <div class="is-not-desktop">
+                {% if aboutMe %}
+                    <h1 class="about-me-name">{{ aboutMe[0].name }}</h1>
+                    <h2 class="about-me-job">{{ aboutMe[0].myJob }}</h2>
+                {% endif %}
+            </div>
+            <!--NAME & JOB MOBILE___end-->
             <!--SOCIAL LINKS___start-->
             <div class="social-links">
                 {% if socialLinks is not empty %}
@@ -78,50 +115,45 @@
                 {% endif %}
             </div>
             <!--SOCIAL LINKS___end-->
-            <!--NAME & JOB MOBILE___start-->
-            <div class="is-not-desktop">
-                {% if aboutMe %}
-                    <h1 class="about-me-name">{{ aboutMe[0].name }}</h1>
-                    <h2 class="about-me-job">{{ aboutMe[0].myJobTitle }}</h2>
-                {% endif %}
-            </div>
-            <!--NAME & JOB MOBILE___end-->
+            
         </aside>
 
         <section class="about-me-articles">
-            <!--ADMIN BUTTONS FOR ADD - EDIT - DELETE___start-->
+            <!--ADMIN BUTTONS FOR ADD___start-->
             {% if app.user and is_granted("ROLE_ADMIN") %}
-                {% if aboutMe is empty %}
-                    <div class="container-add cont-add-about-me">
-                        <a href="{{ path('about_me_new') }}">
-                            <button type="submit" class="buttons-admin button-add">
-                                <i class="fas fa-plus"></i>
-                            </button>  
-                        </a>
-                    </div>
-                {% endif %}
-                {% if aboutMe is not empty %}
-                    <div class="container-delete-edit cont-del-edit-about-me">
-                        <a href="{{ path('about_me_edit', {'id': aboutMe[0].id }) }}">
-                            <button type="submit" class="buttons-admin button-edit">
-                                <i class="fas fa-pencil-alt"></i>
-                            </button>
-                        </a>
-                        <form method="post" action="{{ path('about_me_delete', {'id' : aboutMe[0].id}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir supprimer le contenu?');">
-                            <input type="hidden" name="_method" value="DELETE">
-                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ aboutMe[0].id) }}">
-                            <button type="submit" class="buttons-admin button-delete">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </form>
-                    </div>
-                {% endif %}
+                <div class="container-add cont-add-text-home">
+                    <a href="{{ path('text_home_new') }}">
+                        <button type="submit" class="buttons-admin button-add">
+                            <i class="fas fa-plus"></i>
+                        </button>  
+                    </a>
+                </div>
             {% endif %}
-            <!--ADMIN BUTTONS FOR ADD - EDIT - DELETE___end-->
-            <article>
-                <h2 class="sub-title">{{ aboutMe[0].myNewsTitle }}</h2>
-                <p class="paragraph">{{ aboutMe[0].myNewsText|nl2br }}</p>
-            </article>
+            <!--ADMIN BUTTONS FOR ADD___end-->
+            {% for textHome in textHomes %}
+                <article>
+                    <!--ADMIN BUTTONS FOR EDIT - DELETE___start-->
+                    {% if app.user and is_granted("ROLE_ADMIN") %}
+                        <div class="container-delete-edit cont-del-edit-text-home">
+                            <a href="{{ path('text_home_edit', {'id': textHome.id }) }}">
+                                <button type="submit" class="buttons-admin button-edit">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </button>
+                            </a>
+                            <form method="post" action="{{ path('text_home_delete', {'id' : textHome.id}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir supprimer le contenu?');">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ textHome.id) }}">
+                                <button type="submit" class="buttons-admin button-delete">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </form>
+                        </div>
+                    {% endif %}
+                    <!--ADMIN BUTTONS FOR EDIT - DELETE___end-->
+                    <h2 class="sub-title">{{ textHome.title }}</h2>
+                    <p class="paragraph">{{ textHome.text|nl2br }}</p>
+                </article>
+            {% endfor %}
         </section>
     </main>
 {% endblock %}

@@ -61,43 +61,7 @@ class AboutMe
      *      maxMessage = "Le titre ne peut pas faire plus de {{ limit }} caractères"
      * )
      */
-    private $myJobTitle;
-
-    /**
-     * @ORM\Column(type="string", length=1000)
-     * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 1000,
-     *      minMessage = "Le texte doit faire au moins {{ limit }} caractères",
-     *      maxMessage = "Le texte ne peut pas faire plus de {{ limit }} caractères"
-     * )
-     */
-    private $myJobText;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 255,
-     *      minMessage = "Le titre doit faire au moins {{ limit }} caractères",
-     *      maxMessage = "Le titre ne peut pas faire plus de {{ limit }} caractères"
-     * )
-     */
-    private $myNewsTitle;
-
-    /**
-     * @ORM\Column(type="string", length=1000)
-     * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 1000,
-     *      minMessage = "Le texte doit faire au moins {{ limit }} caractères",
-     *      maxMessage = "Le texte ne peut pas faire plus de {{ limit }} caractères"
-     * )
-     */
-    private $myNewsText;
+    private $myJob;
 
     /**
      * @ORM\Column(type="string", length=15)
@@ -159,50 +123,14 @@ class AboutMe
         return $this->avatarFile;
     }
 
-    public function getMyJobTitle(): ?string
+    public function getMyJob(): ?string
     {
-        return $this->myJobTitle;
+        return $this->myJob;
     }
 
-    public function setMyJobTitle(string $myJobTitle): self
+    public function setMyJob(string $myJob): self
     {
-        $this->myJobTitle = $myJobTitle;
-
-        return $this;
-    }
-
-    public function getMyJobText(): ?string
-    {
-        return $this->myJobText;
-    }
-
-    public function setMyJobText(string $myJobText): self
-    {
-        $this->myJobText = $myJobText;
-
-        return $this;
-    }
-
-    public function getMyNewsTitle(): ?string
-    {
-        return $this->myNewsTitle;
-    }
-
-    public function setMyNewsTitle(string $myNewsTitle): self
-    {
-        $this->myNewsTitle = $myNewsTitle;
-
-        return $this;
-    }
-
-    public function getMyNewsText(): ?string
-    {
-        return $this->myNewsText;
-    }
-
-    public function setMyNewsText(string $myNewsText): self
-    {
-        $this->myNewsText = $myNewsText;
+        $this->myJob = $myJob;
 
         return $this;
     }
