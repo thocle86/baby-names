@@ -14,6 +14,19 @@
     z-index: 100;
 }
 
+.fa-user,
+.fa-book,
+.fa-envelope,
+.fa-circle,
+.nav-menu a {
+    font-size: 2rem;
+    color: var(--white);
+}
+
+.this-page {
+    color: var(--primary-color);
+}
+
 @media screen and (max-width: 979px) {
     .menu-button {
         position: fixed;
@@ -70,10 +83,9 @@
         border-bottom: none;
     }
 
-    .nav-menu i,
+    .menu i,
     .nav-menu a {
         font-size: 2rem;
-        color: var(--white);
     }
 
     .menu-clear {
@@ -119,7 +131,6 @@
     .menu i,
     .menu a {
         font-size: 1.2rem;
-        color: var(--white);
     }
 
     .menu i {
@@ -131,7 +142,6 @@
     .menu i,
     .menu a {
         font-size: 1.5rem;
-        color: var(--white);
     }
 
     .menu i {

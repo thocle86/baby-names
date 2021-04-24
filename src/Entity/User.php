@@ -18,11 +18,13 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @var integer
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @var string
      * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
      */
     private $email;
@@ -40,6 +42,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="boolean")
+     * @var boolean
      */
     private $isVerified = false;
 

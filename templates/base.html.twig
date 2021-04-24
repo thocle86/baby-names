@@ -25,19 +25,34 @@
                 </div>
                 <ul class="nav-menu">
                     <li>
+                        {% if aboutMe is defined %}
+                            <i class="fas fa-circle is-not-mobile this-page"></i>
+                        {% else %}
+                            <i class="far fa-circle is-not-mobile"></i>
+                        {% endif %}
                         <i class="fas fa-user"></i>
                         <a href="{{ path('about_me') }}">
                             A propos de moi
                         </a>
                     </li>
                     <li>
+                        {% if projects is defined %}
+                            <i class="fas fa-circle is-not-mobile this-page"></i>
+                        {% else %}
+                            <i class="far fa-circle is-not-mobile"></i>
+                        {% endif %}
                         <i class="fas fa-book"></i>
                         <a href="{{ path('project') }}">
                             Mon portfolio
                         </a>
                     </li>
                     <li>
-                        <i class="fas fa-at"></i>
+                        {% if contact is defined %}
+                            <i class="fas fa-circle is-not-mobile this-page"></i>
+                        {% else %}
+                            <i class="far fa-circle is-not-mobile"></i>
+                        {% endif %}
+                        <i class="fas fa-envelope"></i>
                         <a href="{{ path('contact') }}">
                             Me contacter
                         </a>
