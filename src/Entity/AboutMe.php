@@ -18,11 +18,13 @@ class AboutMe
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @var integer
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @var string
      * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
      * @Assert\Length(
      *      min = 2,
@@ -53,6 +55,7 @@ class AboutMe
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @var string
      * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
      * @Assert\Length(
      *      min = 2,
@@ -65,6 +68,7 @@ class AboutMe
 
     /**
      * @ORM\Column(type="string", length=15)
+     * @var string
      * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
      * @Assert\Length(
      *      min = 2,

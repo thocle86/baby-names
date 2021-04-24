@@ -144,6 +144,7 @@
 
     .paragraph {
         padding: 10px 0 30px;
+        line-height: 2rem;
     }
 }
 
